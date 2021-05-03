@@ -1,1 +1,68 @@
 /* You can add global styles to this file, and also import other style files */
+/*===========================
+***********GENERAL***********
+============================*/
+
+* {
+  --color-fondo: #0e0f11;
+  --color-neon: #0a8cbf;
+  --color-texto-boton: #fff;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--color-fondo);
+  font-family: "Inconsolata", monospace;
+  font-size: 20px;
+  line-height: 24px;
+}
+
+/* ====================================
+ *ESTILOS DE TEXTO CON EFECTOS DE NEON
+ *=====================================*/
+
+.txt-neon {
+  color: var(--color-neon);
+  text-shadow: 0 0 2.5px var(--color-neon), 0 0 10px var(--color-neon),
+    0 0 20px var(--color-neon);
+}
+
+/*===========================
+************NAVBAR***********
+============================*/
+.navbar-fondo-oscuro {
+  background: var(--color-fondo);
+}
+
+.navbar-logo {
+  font-size: 2em;
+  font-weight: 700;
+}
+
+.link-activo {
+  color: var(--color-neon);
+}
+
+/*===========================
+************FOOTER***********
+============================*/
+.footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 10px;
+  line-height: 20px;
+  /** Se utiliza position:fixed; para poder usar bottom:0; asi el footer queda fijo al final de la pagina**/
+  position: fixed;
+  bottom: 0px;
+}
+
+.footer-logo {
+  text-decoration: none;
+  font-size: 1em;
+  font-weight: 700;
+}

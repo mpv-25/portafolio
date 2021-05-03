@@ -1,0 +1,54 @@
+<nav class="navbar navbar-expand-lg navbar-dark navbar-fondo-oscuro">
+  <div class="container-fluid">
+    <a class="nav-link txt-neon navbar-logo" href="#">{{ logo }}</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div
+      class="collapse navbar-collapse d-lg-flex justify-content-lg-around"
+      id="navbarNavAltMarkup"
+    >
+      <div class="navbar-nav text-center">
+        <a class="nav-link m-3" routerLink="/home" routerLinkActive="active"
+          ><i class="fas fa-home m-2"></i> Home</a
+        >
+        <a
+          class="nav-link m-3"
+          routerLink="/proyectos"
+          routerLinkActive="active"
+          ><i class="fas fa-briefcase m-2"></i>Proyectos</a
+        >
+        <a
+          class="nav-link m-3"
+          routerLink="/acerca-de-mi"
+          routerLinkActive="active"
+          ><i class="fas fa-user-tie m-2"></i>Acerca de mi</a
+        >
+        <a class="nav-link m-3" routerLink="/contacto" routerLinkActive="active"
+          ><i class="fas fa-comments m-2"></i> Contacto</a
+        >
+      </div>
+      <div
+        class="navbar-nav navbar-redes-sociales d-flex flex-row justify-content-center"
+      >
+        <a class="nav-link m-3" routerLink="" target="_blanck"
+          ><i class="fab fa-twitter"></i
+        ></a>
+        <a class="nav-link m-3" routerLink="" target="_black"
+          ><i class="fab fa-linkedin-in"></i
+        ></a>
+        <a class="nav-link m-3" routerLink="" target="_black"
+          ><i class="fab fa-github"></i
+        ></a>
+      </div>
+    </div>
+  </div>
+</nav>
