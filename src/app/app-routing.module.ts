@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { UsuarioComponent } from './panel-control/pages/usuario/usuario.component';
 //components
 import { AboutComponent } from './portafolio/pages/about/about.component';
 import { ContactComponent } from './portafolio/pages/contact/contact.component';
@@ -11,6 +12,7 @@ const routes: Routes = [
   { path: 'proyectos', component: ProjectsComponent },
   { path: 'acerca-de-mi', component: AboutComponent },
   { path: 'contacto', component: ContactComponent },
+  { path: 'usuario', component: UsuarioComponent },
   { path: '', pathMatch: 'full', redirectTo: 'home' },
   { path: '**', pathMatch: 'full', redirectTo: 'home' },
 ];

@@ -8,10 +8,11 @@ import {SharedModule} from './shared/shared.module';
 
 //Components
 import {AppComponent} from './app.component';
+import { PanelControlModule } from './panel-control/panel-control.module';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, AppRoutingModule, PortafolioModule, SharedModule],
+  imports: [BrowserModule, AppRoutingModule, PortafolioModule, PanelControlModule ,SharedModule],
   providers: [],
   bootstrap: [AppComponent],
 })
