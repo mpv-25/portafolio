@@ -3,20 +3,14 @@ import { BrowserModule } from '@angular/platform-browser';
 
 //Modules
 import { AppRoutingModule } from './app-routing.module';
-import { PortafolioModule } from './portafolio/portafolio.module';
+import { CoreModule } from './core/core.module';
 
 //Components
 import { AppComponent } from './app.component';
-import { PanelControlModule } from './panel-control/panel-control.module';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    PortafolioModule,
-    PanelControlModule,
-  ],
+  imports: [BrowserModule, AppRoutingModule, CoreModule],
   providers: [],
   bootstrap: [AppComponent],
 })

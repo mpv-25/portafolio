@@ -110,6 +110,11 @@ body {
   color: var(--color-success);
   margin: 0 10px;
 }
+.top-nav-icono:hover,
+.top-nav-icono-message:hover {
+  color: var(--color-texto-claro);
+}
+
 /* ====================================
  *LEFT NAVBAR
  *=====================================*/
@@ -131,6 +136,9 @@ body {
   text-decoration: none;
   color: var(--color-neon);
 }
+.left-navbar-link:hover {
+  color: var(--color-texto-claro);
+}
 
 /* ====================================
  *PUBLIC
@@ -147,9 +155,9 @@ body {
   font-size: 2em;
   font-weight: 700;
 }
-
-.link-activo {
-  color: var(--color-neon);
+.navbar-logo:hover {
+  font-weight: 400;
+  color: var(--color-texto-claro);
 }
 
 /*===========================
@@ -171,6 +179,10 @@ body {
   text-decoration: none;
   font-size: 1em;
   font-weight: 700;
+}
+.footer-logo:hover {
+  color: var(--color-texto-claro);
+  font-weight: 400;
 }
 
 /*===========================

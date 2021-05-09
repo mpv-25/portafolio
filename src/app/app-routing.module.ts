@@ -13,6 +13,11 @@ const routes: Routes = [
     loadChildren: () =>
       import('./public/public.module').then((module) => module.PublicModule),
   },
+  {
+    path: '**',
+    loadChildren: () =>
+      import('./public/public.module').then((module) => module.PublicModule),
+  },
 ];
 
 @NgModule({
