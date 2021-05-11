@@ -1,0 +1,135 @@
+<div class="row justify-content-center mb-5">
+  <div class="col-12-auto text-center">
+    <h3 class="acerca-de-mi-titulo txt-neon">Curriculum Vitae</h3>
+    <!-- Button trigger modal -->
+    <a
+      type="button"
+      class="btn-box btn-neon"
+      data-bs-toggle="modal"
+      data-bs-target="#staticBackdrop"
+    >
+      <span id="span1"></span>
+      <span id="span2"></span>
+      <span id="span3"></span>
+      <span id="span4"></span>
+      {{ "{ " + "click para ver" + " }" }}
+    </a>
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    <!-- Formulario -->
+    <form
+      autocomplete="off"
+      [formGroup]="formulario"
+      (ngSubmit)="enviarFormulario()"
+    >
+      <!-- Modal -->
+      <div
+        class="modal fade"
+        id="staticBackdrop"
+        data-bs-backdrop="static"
+        data-bs-keyboard="false"
+        tabindex="-1"
+        aria-labelledby="staticBackdropLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title text-center" id="staticBackdropLabel">
+                Formulario de Identificación
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <div class="mb-3">
+                <div class="form-text">
+                  Por resguardar mi información personal es obligatorio que el
+                  reclutador se identifique.
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label"
+                  >Nombre de la Empresa</label
+                >
+                <input
+                  formControlName="empresa"
+                  type="text"
+                  class="form-control"
+                  id="exampleInputEmail1"
+                  aria-describedby="emailHelp"
+                />
+                <div class="form-text">
+                  Si es un particular nombre completo.
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label"
+                  >Correo del Reclutador</label
+                >
+                <input
+                  formControlName="correo"
+                  type="email"
+                  class="form-control"
+                  id="exampleInputEmail1"
+                  aria-describedby="emailHelp"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label"
+                  >Celular o Teléfono</label
+                >
+                <input
+                  formControlName="contacto"
+                  type="number"
+                  class="form-control"
+                  id="exampleInputEmail1"
+                  aria-describedby="emailHelp"
+                />
+                <div class="form-text">
+                  Si es celular use el formato 09xxxxxxxx , si es teléfono
+                  021xxxxx
+                </div>
+              </div>
+              <div class="mb-3 form-check">
+                <input
+                  formControlName="acepta"
+                  type="checkbox"
+                  class="form-check-input"
+                  id="exampleCheck1"
+                />
+                <label class="form-check-label" for="exampleCheck1"
+                  >Los datos proporcionados son reales</label
+                >
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button
+                id="cerrar_modal-identificacion"
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Cerrar
+              </button>
+              <button
+                type="submit"
+                class="btn btn-primary"
+                [disabled]="!formulario.valid"
+              >
+                Ver Curriculum
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

@@ -5,6 +5,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { PublicComponent } from './public.component';
 import { HomeComponent } from './home/home.component';
 import { ProyectosComponent } from './proyectos/proyectos.component';
+import { AcercaDeMiComponent } from './acerca-de-mi/acerca-de-mi.component';
+import { CurriculumComponent } from './curriculum/curriculum.component';
 
 const routes: Routes = [
   {
@@ -14,6 +16,8 @@ const routes: Routes = [
       { path: '', pathMatch: 'full', redirectTo: 'home' },
       { path: 'home', component: HomeComponent },
       { path: 'proyectos', component: ProyectosComponent },
+      { path: 'acerca-de-mi', component: AcercaDeMiComponent },
+      { path: 'curriculum', component: CurriculumComponent },
     ],
   },
 ];

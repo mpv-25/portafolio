@@ -39,7 +39,7 @@ body {
  *=====================================*/
 
 .txt-neon {
-  color: var(--color-neon);
+  color: var(--color-texto-claro);
   text-shadow: 0 0 2.5px var(--color-neon), 0 0 10px var(--color-neon),
     0 0 20px var(--color-neon);
 }
@@ -50,25 +50,91 @@ body {
 .btn-neon {
   position: relative;
   display: inline-block;
-  padding: 10px 15px;
+  padding: 15px 25px;
   color: var(--color-texto-claro);
   letter-spacing: 4px;
-  font-size: 1em;
   text-decoration: none;
   overflow: hidden;
-  transition: 0.1s;
-  border: 1px solid var(--color-fondo);
-  border-radius: 10px;
-  margin: 2px 10px;
+  transition: 0.2s;
 }
 .btn-neon:hover {
   background: var(--color-neon);
   box-shadow: 0 0 10px var(--color-neon), 0 0 40px var(--color-neon),
     0 0 80px var(--color-neon);
-  transition-delay: 0.5s;
-  color: var(--color-fondo);
-  border-color: var(--color-neon);
+  transition-delay: 1s;
+  color: var(--color-texto-claro);
 }
+/* ==========================================
+ *ESTILOS DEL EFECTO DE LINEAS EN MOVIMIENTO
+ *===========================================*/
+/*======================================
+ *CONFIGURACIONES GENERALES DE LA LINEAS
+ *======================================*/
+.btn-neon span {
+  position: absolute;
+  display: block;
+}
+/*==============
+ *LINEA SUPERIOR
+ *==============*/
+#span1 {
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--color-neon));
+}
+.btn-neon:hover #span1 {
+  left: 100%;
+  transition: 1s;
+}
+/*==============
+ *LINEA INFERIOR
+ *==============*/
+#span3 {
+  bottom: 0;
+  right: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(270deg, transparent, var(--color-neon));
+}
+.btn-neon:hover #span3 {
+  right: 100%;
+  transition: 1s;
+  transition-delay: 0.5s;
+}
+/*===================
+ *LINEA DE LA DERECHA
+ *===================*/
+#span2 {
+  top: -100%;
+  right: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(180deg, transparent, var(--color-neon));
+}
+.btn-neon:hover #span2 {
+  top: 100%;
+  transition: 1s;
+  transition-delay: 0.25s;
+}
+/*=====================
+ *LINEA DE LA IZQUIERDA
+ *=====================*/
+
+#span4 {
+  bottom: -100%;
+  left: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(360deg, transparent, var(--color-neon));
+}
+.btn-neon:hover #span4 {
+  bottom: 100%;
+  transition: 1s;
+  transition-delay: 0.75s;
+}
+
 /* ====================================
  *ADMIN
  *=====================================*/
@@ -143,6 +209,24 @@ body {
 /* ====================================
  *PUBLIC
  *=====================================*/
+/* ====================================
+ ***************HOME********************
+ *=====================================*/
+.home-txt {
+  color: var(--color-texto-claro);
+  line-height: 40px;
+  letter-spacing: 2px;
+  font-size: 2em;
+  font-weight: 400;
+}
+.home-titulo,
+.home-txt {
+  display: inline-block;
+  margin: 0 5px;
+}
+.btn-home {
+  font-size: 3em;
+}
 
 /*===========================
 ************NAVBAR***********
@@ -223,6 +307,28 @@ body {
 .thumbnail200 {
   width: 200px;
   height: 200px;
+}
+.btn-proyecto {
+  font-size: 0.7em;
+}
+
+/*===========================
+*********ACERCA-DE-MI********
+============================*/
+.acerca-de-mi-titulo {
+  font-size: 2em;
+  font-weight: 700;
+}
+.acerca-de-mi-txt {
+  font-size: 1em;
+  color: var(--color-texto-claro);
+  font-weight: 400;
+}
+
+.acerca-de-mi-svg {
+  width: 100px;
+  border-radius: 10px;
+  margin: 10px;
 }
 
 /*===========================

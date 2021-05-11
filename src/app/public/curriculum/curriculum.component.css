@@ -1,0 +1,247 @@
+/*=========================
+ *PALETA DE COLORES
+ *========================*/
+
+:root {
+}
+/*=========================
+ *CONFIGURACIÓN GENERAL
+ *========================*/
+.curriculum {
+  --color-aside-inferior: #0c9cb7;
+  --color-aside-superior: #404040;
+  --color-fondo-main: #ffffff;
+  --color-titulo: #3595a5;
+  --color-texto-main: #333333;
+  --color-fondo-negro: #000000;
+  font-family: "Roboto Condensed", sans-serif;
+  max-width: 100%;
+  min-height: 100%;
+}
+.fab,
+.fas {
+  margin: 5px;
+}
+.titulo {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--color-titulo);
+  margin: 20px auto;
+}
+.hr {
+  color: var(--color-aside-inferior);
+}
+/*=========================
+ *HEADER
+ *========================*/
+
+.header {
+  width: 100%;
+  background: var(--color-fondo-negro);
+  height: 50px;
+}
+/*=========================
+ *NAV
+ *========================*/
+
+.nav {
+  width: 100%;
+  padding: 10px;
+  margin: auto;
+}
+.nav__ul {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: auto;
+}
+.nav__li {
+  list-style: none;
+  margin: auto 20px;
+}
+.nav__a {
+  text-decoration: none;
+  color: var(--color-fondo-main);
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+/*=========================
+ *MAIN
+ *========================*/
+
+.main {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+  height: 100%;
+  background: var(--color-fondo-main);
+}
+/*=========================
+ *ASIDE
+ *========================*/
+
+.aside {
+  display: flex;
+  flex-direction: column;
+  word-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  width: 30%;
+  background: var(--color-aside-inferior);
+  height: 100%;
+}
+.aside__informacion {
+  width: 90%;
+  color: var(--color-fondo-main);
+  margin: 10px auto;
+}
+.aside__span {
+  font-size: 0.8rem;
+  font-weight: 300;
+}
+.aside__hr {
+  width: 100%;
+  color: var(--color-fondo-main);
+  margin: 10px auto;
+}
+.aside__titulo {
+  font-size: 2rem;
+  font-weight: 400;
+}
+.aside__texto {
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 2rem;
+}
+.imagen {
+  position: relative;
+  max-width: 70%;
+  margin: 10px auto;
+  z-index: 3;
+}
+.imagen__oscura {
+  position: absolute;
+  background: var(--color-aside-superior);
+  z-index: 2;
+}
+.img {
+  max-width: 100%;
+  margin: 30px auto;
+  border: 1px solid var(--color-titulo);
+}
+/*=========================
+ *SECTION
+ *========================*/
+
+.section {
+  width: 70%;
+  background: var(--color-fondo-main);
+  padding: 20px;
+}
+/*=========================
+ *ARTICLE
+ *========================*/
+
+.article {
+  margin-top: 10px;
+}
+.article__titulo {
+  font-size: 2rem;
+  font-weight: 400;
+  margin-bottom: 10px;
+}
+.article__year {
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin-top: 10px;
+  color: var(--color-titulo);
+}
+
+.article__texto {
+  font-size: 1.5rem;
+  font-weight: 300;
+  line-height: 2rem;
+}
+/*=========================
+ *FOOTER
+ *========================*/
+
+.footer {
+  text-align: center;
+  position: absolute;
+  width: 100%;
+  height: 30px;
+  background: var(--color-fondo-negro);
+  color: var(--color-fondo-main);
+}
+.footer__p {
+  margin: auto;
+  padding: 5px;
+}
+/*=========================
+ *RESPONSIVE
+ *========================*/
+@media screen and (max-width: 800px) {
+  /*=========================
+ *CONFIGURACIÓN GENERAL
+ *========================*/
+
+  * {
+    font-size: 14px;
+  }
+  /*=========================
+ *ASIDE
+ *========================*/
+
+  .aside {
+    width: 40%;
+  }
+  /*=========================
+ *SECTION
+ *========================*/
+
+  .section {
+    width: 60%;
+  }
+}
+@media screen and (max-width: 414px) {
+  /*=========================
+ *CONFIGURACIÓN GENERAL
+ *========================*/
+
+  * {
+    font-size: 12px;
+  }
+  /*=========================
+ *NAV
+ *========================*/
+
+  .nav__li {
+    margin: auto 8px;
+  }
+  .nav__a {
+    font-size: 1rem;
+  }
+}
+@media screen and (max-width: 375px) {
+  /*=========================
+ *HEADER
+ *========================*/
+
+  .header {
+    height: 60px;
+  }
+  /*=========================
+ *NAV
+ *========================*/
+
+  .nav__li {
+    margin: auto 5px;
+  }
+}
