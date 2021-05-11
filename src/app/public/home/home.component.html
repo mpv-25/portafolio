@@ -1,26 +1,28 @@
 <div class="container">
-  <div class="row m-3 m-lg-5">
-    <div class="col">
+  <div class="row flex-column flex-md-row m-3 m-lg-5 justify-content-around">
+    <div class="col m-2">
       <p class="home-txt">Hola me llamo</p>
       <h1 class="home-titulo txt-neon">Matias Melanio Pinto Vázquez</h1>
-      <h3 class="home-txt">
-        Estudiante de último año en Lic. de Análisis de Sistemas en la
-        Universidad Nacional de Asunción.
-      </h3>
       <h2 class="home-txt">
         Desarrollador web <span class="txt-neon">Front-End</span> y
         <span class="txt-neon">Back-End</span>.
       </h2>
     </div>
+    <div class="col-auto text-center m-2">
+      <img class="home-img" [src]="'./assets/img/foto.jpg'" alt="foto" />
+    </div>
   </div>
   <div class="row justify-content-center">
     <div class="col-auto text-center">
-      <a class="btn-box btn-neon" href="#">
+      <a
+        class="btn-box btn-neon"
+        routerLink="/acerca-de-mi"
+        routerLinkActive="active"
+        ><i class="fas fa-user-tie m-2"></i>SKILLS
         <span id="span1"></span>
         <span id="span2"></span>
         <span id="span3"></span>
         <span id="span4"></span>
-        {{ "{ " + "Contáctame" + " }" }}
       </a>
     </div>
   </div>
