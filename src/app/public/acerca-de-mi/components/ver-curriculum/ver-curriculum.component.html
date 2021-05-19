@@ -34,7 +34,7 @@
         aria-labelledby="staticBackdropLabel"
         aria-hidden="true"
       >
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-dialog-scrollable">
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title text-center" id="staticBackdropLabel">
@@ -48,66 +48,56 @@
               ></button>
             </div>
             <div class="modal-body">
-              <div class="mb-3">
-                <div class="form-text">
-                  Por resguardar mi información personal es obligatorio que el
-                  reclutador se identifique.
-                </div>
-              </div>
+              <div class="container">
+                <div class="row justify-content-center">
+                  <div class="col-auto text-center">
+                    <html lang="en">
+                      <head>
+                        <meta
+                          name="google-signin-scope"
+                          content="profile email"
+                        />
+                        <meta
+                          name="google-signin-client_id"
+                          content="YOUR_CLIENT_ID.apps.googleusercontent.com"
+                        />
+                        <script
+                          src="https://apis.google.com/js/platform.js"
+                          async
+                          defer
+                        ></script>
+                      </head>
+                      <body>
+                        <div
+                          class="g-signin2"
+                          data-onsuccess="onSignIn"
+                          data-theme="dark"
+                        ></div>
+                        <script>
+                          function onSignIn(googleUser) {
+                            // Useful data for your client-side scripts:
+                            var profile = googleUser.getBasicProfile();
+                            console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+                            console.log("Full Name: " + profile.getName());
+                            console.log(
+                              "Given Name: " + profile.getGivenName()
+                            );
+                            console.log(
+                              "Family Name: " + profile.getFamilyName()
+                            );
+                            console.log("Image URL: " + profile.getImageUrl());
+                            console.log("Email: " + profile.getEmail());
 
-              <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label"
-                  >Nombre de la Empresa</label
-                >
-                <input
-                  formControlName="empresa"
-                  type="text"
-                  class="form-control"
-                  id="exampleInputEmail1"
-                  aria-describedby="emailHelp"
-                />
-                <div class="form-text">
-                  Si es un particular nombre completo.
+                            // The ID token you need to pass to your backend:
+                            var id_token =
+                              googleUser.getAuthResponse().id_token;
+                            console.log("ID Token: " + id_token);
+                          }
+                        </script>
+                      </body>
+                    </html>
+                  </div>
                 </div>
-              </div>
-              <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label"
-                  >Correo del Reclutador</label
-                >
-                <input
-                  formControlName="correo"
-                  type="email"
-                  class="form-control"
-                  id="exampleInputEmail1"
-                  aria-describedby="emailHelp"
-                />
-              </div>
-              <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label"
-                  >Celular o Teléfono</label
-                >
-                <input
-                  formControlName="contacto"
-                  type="number"
-                  class="form-control"
-                  id="exampleInputEmail1"
-                  aria-describedby="emailHelp"
-                />
-                <div class="form-text">
-                  Si es celular use el formato 09xxxxxxxx , si es teléfono
-                  021xxxxx
-                </div>
-              </div>
-              <div class="mb-3 form-check">
-                <input
-                  formControlName="acepta"
-                  type="checkbox"
-                  class="form-check-input"
-                  id="exampleCheck1"
-                />
-                <label class="form-check-label" for="exampleCheck1"
-                  >Los datos proporcionados son reales</label
-                >
               </div>
             </div>
             <div class="modal-footer">

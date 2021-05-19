@@ -7,6 +7,7 @@ import { HomeComponent } from './home/home.component';
 import { ProyectosComponent } from './proyectos/proyectos.component';
 import { AcercaDeMiComponent } from './acerca-de-mi/acerca-de-mi.component';
 import { CurriculumComponent } from './curriculum/curriculum.component';
+import {ContactoComponent} from './contacto/contacto.component';
 
 const routes: Routes = [
   {
@@ -18,6 +19,7 @@ const routes: Routes = [
       { path: 'proyectos', component: ProyectosComponent },
       { path: 'acerca-de-mi', component: AcercaDeMiComponent },
       { path: 'curriculum', component: CurriculumComponent },
+      { path: 'contacto', component: ContactoComponent}
     ],
   },
 ];

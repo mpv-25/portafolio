@@ -9,6 +9,7 @@
   --color-texto-claro: #fff;
   --color-gris-claro: #d3d3d3;
   --color-success: #22bb33;
+  --color-alert: #fd1532;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -17,8 +18,40 @@
 body {
   background: var(--color-fondo);
   font-family: "Inconsolata", monospace;
-  font-size: 20px;
+  font-size: 18px;
   line-height: 24px;
+}
+
+/*===========================
+***********ANIMATED***********
+============================*/
+
+.animated {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+.fast {
+  -webkit-animation-duration: 0.4s;
+  animation-duration: 0.4s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.fadeIn {
+  animation-name: fadeIn;
 }
 
 /* ====================================
@@ -33,6 +66,12 @@ body {
   margin: 0px auto;
   min-height: calc(100% - 4rem);
   min-width: 100%;
+}
+/* ====================================
+ *ESTILOS DE ANGULAR MAPS
+ *=====================================*/
+agm-map {
+  height: 300px;
 }
 
 /* ====================================
@@ -234,7 +273,59 @@ body {
   border: 1px solid var(--color-neon);
   border-radius: 5px;
 }
-
+/* ====================================
+ *************CONTACTO*****************
+ *=====================================*/
+.contacto-txt,
+.btn-contacto,
+.btn-fecha {
+  color: var(--color-texto-claro);
+  line-height: 40px;
+  letter-spacing: 2px;
+  font-size: 1em;
+  font-weight: 400;
+}
+.contacto-titulo,
+.contacto-txt {
+  display: inline-block;
+  margin: 0 5px;
+}
+.btn-contacto {
+  text-decoration: none;
+  padding: 2.5px 5px;
+  color: var(--color-texto-claro);
+  background-color: var(--color-fondo);
+  border-radius: 6px;
+  border: 1px solid var(--color-neon);
+  width: 40%;
+  margin: 10px auto;
+}
+.btn-fecha {
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  color: var(--color-texto-claro);
+  background-color: var(--color-fondo);
+  padding: 5px;
+  margin: 5px auto;
+}
+.btn-contacto:hover {
+  color: var(--color-neon);
+  border: 1px solid var(--color-texto-claro);
+}
+.contacto-input-error {
+  box-shadow: 0 0 20px var(--color-alert);
+  border: 2px solid var(--color-alert);
+}
+.contacto-input-fecha {
+  width: 30%;
+  margin: 0 5px;
+}
+.contacto-mapa {
+  border: 2px solid var(--color-neon);
+  margin: 10px;
+  border-radius: 6px;
+}
 /*===========================
 ************NAVBAR***********
 ============================*/
@@ -369,4 +460,13 @@ body {
   .btn-home {
     font-size: 2em;
   }
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
 }

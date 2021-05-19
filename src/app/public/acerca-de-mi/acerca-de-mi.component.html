@@ -1,8 +1,8 @@
-<div class="container">
+<div class="container animated fast">
   <div class="row justify-content-center">
     <div class="col-auto text-center">
       <h3 class="acerca-de-mi-titulo txt-neon">DESCRIPCIÓN PERSONAL</h3>
-      <p class="acerca-de-mi-txt">
+      <p class="acerca-de-mi-txt animated fadeIn">
         Estudiante de licenciatura en ciencias informáticas énfasis en análisis
         de sistemas(7 semestre) y énfasis en programación de computadoras(6to
         semestre), programador web con conocimientos del front-end y el
@@ -17,11 +17,14 @@
       </p>
     </div>
   </div>
-  <div class="row justify-content-center">
+  <div class="row justify-content-center animated fadeIn">
     <div class="col-12-auto text-center">
       <h3 class="acerca-de-mi-titulo txt-neon">SKILLS</h3>
     </div>
-    <div *ngFor="let skill of skills" class="col-auto text-center">
+    <div
+      *ngFor="let skill of skills"
+      class="col-auto text-center animated fadeIn"
+    >
       <div class="acerca-de-mi-skill">
         <img
           class="acerca-de-mi-svg"
