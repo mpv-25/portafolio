@@ -1,5 +1,8 @@
-<div class="row">
-  <div *ngFor="let cont of [1, 2, 3, 4, 5, 6, 7, 8]" class="col">
+<div class="row justify-content-center animated fast">
+  <div
+    *ngFor="let cont of [1, 2, 3, 4, 5, 6, 7, 8]"
+    class="col-auto text-center animated fadeIn"
+  >
     <div class="proyecto">
       <h3 class="proyecto-titulo">Titulo del Proyecto</h3>
       <p class="proyecto-detalles">
@@ -48,8 +51,20 @@
           />
         </li>
       </ul>
-      <a class="btn-neon" href="#">Code</a>
-      <a class="btn-neon" href="#">Preview</a>
+      <a class="btn-box btn-neon btn-proyecto" href="#">
+        <span id="span1"></span>
+        <span id="span2"></span>
+        <span id="span3"></span>
+        <span id="span4"></span>
+        <i class="fas fa-code"></i> Code
+      </a>
+      <a class="btn-box btn-neon btn-proyecto" href="#">
+        <span id="span1"></span>
+        <span id="span2"></span>
+        <span id="span3"></span>
+        <span id="span4"></span>
+        <i class="fas fa-window-maximize"></i> Preview
+      </a>
     </div>
   </div>
 </div>
