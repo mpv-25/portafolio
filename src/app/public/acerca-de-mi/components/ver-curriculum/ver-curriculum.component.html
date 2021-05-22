@@ -18,108 +18,85 @@
 </div>
 <div class="row">
   <div class="col">
-    <!-- Formulario -->
-    <form
-      autocomplete="off"
-      [formGroup]="formulario"
-      (ngSubmit)="enviarFormulario()"
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="staticBackdrop"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+      aria-labelledby="staticBackdropLabel"
+      aria-hidden="true"
     >
-      <!-- Modal -->
-      <div
-        class="modal fade"
-        id="staticBackdrop"
-        data-bs-backdrop="static"
-        data-bs-keyboard="false"
-        tabindex="-1"
-        aria-labelledby="staticBackdropLabel"
-        aria-hidden="true"
-      >
-        <div class="modal-dialog modal-dialog-scrollable">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title text-center" id="staticBackdropLabel">
-                Formulario de Identificación
-              </h5>
-              <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
-            </div>
-            <div class="modal-body">
-              <div class="container">
-                <div class="row justify-content-center">
-                  <div class="col-auto text-center">
-                    <html lang="en">
-                      <head>
-                        <meta
-                          name="google-signin-scope"
-                          content="profile email"
+      <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title text-center" id="staticBackdropLabel">
+              Acceder a Curriculum Vitae
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="container">
+              <div class="row justify-content-center">
+                <div
+                  class="col d-flex flex-column flex-lg-row align-items-center justify-content-around"
+                >
+                  <div *ngIf="isLoggedin === false">
+                    <link
+                      rel="stylesheet"
+                      type="text/css"
+                      href="//fonts.googleapis.com/css?family=Open+Sans"
+                    />
+                    <div
+                      class="google-btn"
+                      data-bs-dismiss="modal"
+                      type="button"
+                      (click)="loginWithGoogle()"
+                    >
+                      <div class="google-icon-wrapper">
+                        <img
+                          class="google-icon"
+                          src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
                         />
-                        <meta
-                          name="google-signin-client_id"
-                          content="YOUR_CLIENT_ID.apps.googleusercontent.com"
-                        />
-                        <script
-                          src="https://apis.google.com/js/platform.js"
-                          async
-                          defer
-                        ></script>
-                      </head>
-                      <body>
-                        <div
-                          class="g-signin2"
-                          data-onsuccess="onSignIn"
-                          data-theme="dark"
-                        ></div>
-                        <script>
-                          function onSignIn(googleUser) {
-                            // Useful data for your client-side scripts:
-                            var profile = googleUser.getBasicProfile();
-                            console.log("ID: " + profile.getId()); // Don't send this directly to your server!
-                            console.log("Full Name: " + profile.getName());
-                            console.log(
-                              "Given Name: " + profile.getGivenName()
-                            );
-                            console.log(
-                              "Family Name: " + profile.getFamilyName()
-                            );
-                            console.log("Image URL: " + profile.getImageUrl());
-                            console.log("Email: " + profile.getEmail());
-
-                            // The ID token you need to pass to your backend:
-                            var id_token =
-                              googleUser.getAuthResponse().id_token;
-                            console.log("ID Token: " + id_token);
-                          }
-                        </script>
-                      </body>
-                    </html>
+                      </div>
+                      <p class="btn-text-login">Sign in with Google</p>
+                    </div>
+                  </div>
+                  <div *ngIf="!isLoggedin">
+                    <button
+                      type="button"
+                      (click)="loginWithFacebook()"
+                      class="btn btn-block btn-facebook"
+                      data-bs-dismiss="modal"
+                    >
+                      <i class="fab fa-facebook"></i> Sign in with Facebook
+                    </button>
+                  </div>
+                  <div *ngIf="isLoggedin === true">
+                    <button
+                      type="button"
+                      (click)="logOut()"
+                      class="btn btn-primary"
+                    >
+                      Log Out
+                    </button>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="modal-footer">
-              <button
-                id="cerrar_modal-identificacion"
-                type="button"
-                class="btn btn-secondary"
-                data-bs-dismiss="modal"
-              >
-                Cerrar
-              </button>
-              <button
-                type="submit"
-                class="btn btn-primary"
-                [disabled]="!formulario.valid"
-              >
-                Ver Curriculum
-              </button>
-            </div>
+          </div>
+          <div class="modal-footer">
+            Por motivos de privacidad y resguardar mis datos personales, es
+            obligatorio loguearse para poder acceder a mi currículum vitae.
           </div>
         </div>
       </div>
-    </form>
+    </div>
   </div>
 </div>

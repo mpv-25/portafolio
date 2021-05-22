@@ -10,6 +10,8 @@
   --color-gris-claro: #d3d3d3;
   --color-success: #22bb33;
   --color-alert: #fd1532;
+  --color-facebook: #3b5998;
+
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -104,6 +106,7 @@ agm-map {
   transition-delay: 1s;
   color: var(--color-texto-claro);
 }
+
 /* ==========================================
  *ESTILOS DEL EFECTO DE LINEAS EN MOVIMIENTO
  *===========================================*/
@@ -173,6 +176,17 @@ agm-map {
   bottom: 100%;
   transition: 1s;
   transition-delay: 0.75s;
+}
+/* ====================================
+ *Botn de facebook
+ *=====================================*/
+.btn-facebook {
+  background-color: var(--color-facebook);
+  color: var(--color-texto-claro);
+}
+.btn-facebook:hover {
+  color: var(--color-texto-claro);
+  box-shadow: 0 0 20px var(--color-facebook);
 }
 
 /* ====================================
@@ -300,6 +314,10 @@ agm-map {
   width: 40%;
   margin: 10px auto;
 }
+.btn-contacto:hover {
+  color: var(--color-neon);
+  border: 1px solid var(--color-texto-claro);
+}
 .btn-fecha {
   display: inline-block;
   text-align: center;
@@ -308,10 +326,6 @@ agm-map {
   background-color: var(--color-fondo);
   padding: 5px;
   margin: 5px auto;
-}
-.btn-contacto:hover {
-  color: var(--color-neon);
-  border: 1px solid var(--color-texto-claro);
 }
 .contacto-input-error {
   box-shadow: 0 0 20px var(--color-alert);
@@ -433,6 +447,13 @@ agm-map {
 ***********RESPONSIVE********
 ============================*/
 @media only screen and (max-width: 800px) {
+  /* ====================================
+ *Botn de facebook
+ *=====================================*/
+  .btn-facebook {
+    margin-top: 10px;
+  }
+
   /* ====================================
  ***************NAVBAR********************
  *=====================================*/

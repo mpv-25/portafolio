@@ -1,49 +1,61 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import {
+  SocialAuthService,
+  GoogleLoginProvider,
+  FacebookLoginProvider,
+  SocialUser,
+} from 'angularx-social-login';
 
 @Component({
   selector: 'app-ver-curriculum',
   templateUrl: './ver-curriculum.component.html',
 })
 export class VerCurriculumComponent implements OnInit {
-  public formulario: FormGroup;
-  constructor(private fb: FormBuilder, private router: Router) {
-    this.formulario = this.fb.group({
-      empresa: ['', [Validators.required, Validators.minLength(3)]],
-      correo: [
-        '',
-        [
-          Validators.required,
-          Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,3}$'),
-        ],
-      ],
-      contacto: ['', [Validators.required, Validators.minLength(9)]],
-      acepta: [false, Validators.required],
+  loginForm: FormGroup;
+  socialUser: any = {};
+  isLoggedin: boolean = false;
+
+  constructor(
+    private formBuilder: FormBuilder,
+    private socialAuthService: SocialAuthService,
+    private router: Router
+  ) {
+    this.loginForm = this.formBuilder.group({
+      email: ['', Validators.required],
+      password: ['', Validators.required],
     });
+
+    this.socialAuthService.authState.subscribe(
+      (user) => {
+        this.socialUser = user;
+        this.isLoggedin = true;
+        localStorage.setItem('usuario', JSON.stringify(this.socialUser));
+        this.router.navigate(['curriculum']);
+        console.log('Ingreso al curriculum');
+      },
+      (err) => {
+        console.warn('ERROR!!!');
+      }
+    );
   }
 
-  ngOnInit(): void {}
+  ngOnInit() {}
 
-  enviarFormulario() {
-    if (this.formulario.valid) {
-      console.log('El formulario es valido', this.formulario.value);
-      this.borrarFormulario();
-      let modal = document.getElementById('cerrar_modal-identificacion');
-      modal?.click();
-      this.router.navigateByUrl('curriculum');
-    } else {
-      console.warn('El Formulario no es valido');
-      console.log(this.formulario.value);
-    }
+  loginWithGoogle(): void {
+    this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID);
   }
 
-  borrarFormulario() {
-    this.formulario.reset({
-      empresa: '',
-      correo: '',
-      contacto: '',
-      acepta: false,
-    });
+  loginWithFacebook(): void {
+    this.socialAuthService
+      .signIn(FacebookLoginProvider.PROVIDER_ID)
+      .catch((err) => {
+        console.warn('ERROR!!!');
+      });
+  }
+
+  logOut(): void {
+    this.socialAuthService.signOut();
   }
 }
