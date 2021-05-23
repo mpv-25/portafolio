@@ -1,7 +1,7 @@
 <div class="container animated fast">
   <div class="row justify-content-center">
     <div class="col-auto txt-center">
-      <h3 class="contacto-txt">Agendar Entrevista</h3>
+      <h3 class="contacto-txt">Agendar Reunión</h3>
     </div>
   </div>
   <div class="row justify-content-center">
@@ -13,7 +13,7 @@
       >
         <div class="mb-3">
           <label for="exampleInputEmail1" class="mb-2 txt-neon">Empresa </label>
-          <span *ngIf="errorEmpresa" class="text-danger m-2 fs-6">*</span>
+          <span *ngIf="errorEmpresa" class="contacto-text-error m-2">*</span>
           <input
             formControlName="empresa"
             type="text"
@@ -29,7 +29,7 @@
 
         <div class="mb-3">
           <label for="exampleInputEmail1" class="mb-2 txt-neon">Correo</label>
-          <span *ngIf="errorCorreo" class="text-danger m-2 fs-6">*</span>
+          <span *ngIf="errorCorreo" class="contacto-text-error m-2">*</span>
 
           <input
             formControlName="correo"
@@ -43,23 +43,30 @@
             Correo de RRHH en caso de que necesite contactarme con ustedes.
           </div>
         </div>
-        <div class="mb-3">
-          <label class="mb-1 txt-neon">Fecha de Reunión </label>
-          <span *ngIf="errorFecha" class="text-danger m-2 fs-6">*</span>
-          <input
-            formControlName="fecha"
-            class="contacto-input-fecha"
-            [ngClass]="{ 'contacto-input-error': errorFecha }"
-            matInput
-            [matDatepicker]="picker2"
-            placeholder="Día/Mes/Año"
-          />
-          <mat-datepicker-toggle
-            class="btn-fecha"
-            matSuffix
-            [for]="picker2"
-          ></mat-datepicker-toggle>
-          <mat-datepicker #picker2></mat-datepicker>
+        <div class="mb-3 d-flex flex-column">
+          <div>
+            <label class="mb-1 txt-neon">Fecha de Reunión </label>
+            <span *ngIf="errorFecha" class="contacto-text-error m-2">*</span>
+          </div>
+          <div class="">
+            <input
+              [disabled]="true"
+              formControlName="fecha"
+              class="contacto-input-fecha"
+              [ngClass]="{ 'contacto-input-error': errorFecha }"
+              matInput
+              [matDatepicker]="picker2"
+              placeholder="Día/Mes/Año"
+            />
+            <mat-datepicker-toggle
+              class="btn-fecha"
+              matSuffix
+              [for]="picker2"
+            ></mat-datepicker-toggle>
+
+            <mat-datepicker #picker2 [disabled]="false"></mat-datepicker>
+          </div>
+          <div class="form-text">Seleccione una fecha del calendario.</div>
         </div>
         <div class="mb-3">
           <label class="mb-1 txt-neon">Tipo de Reunión </label>
@@ -87,7 +94,7 @@
               <label class="txt-neon" for="flexRadioDefault2"> Online </label>
             </div>
           </div>
-	  <div *ngIf="reunion === 'online'" class="mb-3 animated fadeIn">
+          <div *ngIf="reunion === 'online'" class="mb-3 animated fadeIn">
             <label for="exampleInputEmail1" class="mb-2 txt-neon">URL</label>
             <input
               type="text"
@@ -100,8 +107,8 @@
             </div>
           </div>
         </div>
-	<div *ngIf="reunion === 'presencial'" class="mb-3 animated fadeIn">
-          <label for="exampleInputEmail1" class="mb-2 txt-neon"
+        <div *ngIf="reunion === 'presencial'" class="mb-2 animated fadeIn">
+          <label for="exampleInputEmail1" class="txt-neon"
             >Dirección de la reunión
           </label>
           <span
@@ -111,7 +118,7 @@
               validFecha &&
               marcadores.length == 0
             "
-            class="text-danger m-2 fs-6"
+            class="contacto-text-error m-2"
             >*</span
           >
           <div
@@ -122,7 +129,7 @@
           </div>
           <div
             *ngIf="!validEmpresa && !validCorreo && !validFecha"
-            class="form-text"
+            class="form-text mb-3"
           >
             Completar los campos empresa, correo y fecha para poder indicar la
             ubicación.
@@ -165,17 +172,23 @@
         </div>
 
         <div class="mb-3 form-floating">
-          <textarea
-            formControlName="mensaje"
-            class="form-control"
-            [ngClass]="{ 'contacto-input-error': errorMensaje }"
-            placeholder="Leave a comment here"
-            id="floatingTextarea2"
-            style="height: 100px"
-          ></textarea>
-          <label for="floatingTextarea2">Mensaje</label>
+          <div>
+            <label for="exampleInputEmail1" class="mb-2 txt-neon"
+              >Mensaje
+            </label>
+            <span *ngIf="errorMensaje" class="contacto-text-error m-2">*</span>
+          </div>
+          <div>
+            <textarea
+              formControlName="mensaje"
+              class="form-control"
+              [ngClass]="{ 'contacto-input-error': errorMensaje }"
+              placeholder="Escriba un mensaje"
+              id="floatingTextarea2"
+              style="height: 100px"
+            ></textarea>
+          </div>
         </div>
-
         <button type="submit" class="btn-contacto">Enviar</button>
       </form>
     </div>

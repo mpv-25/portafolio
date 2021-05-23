@@ -18,6 +18,13 @@ export class AcercaDeMiComponent implements OnInit {
     { titulo: 'Node & Express', img: 'node.svg' },
     { titulo: 'NPM', img: 'npm.svg' },
     { titulo: 'TypeScript', img: 'typescript.svg' },
+    { titulo: 'RXJS', img: 'rxjs.svg' },
+    { titulo: 'SQL', img: 'base-de-datos.svg' },
+    { titulo: 'PostgreSQL', img: 'postgresql.svg' },
+    { titulo: 'MySQL', img: 'mysql.svg' },
+    { titulo: 'PHP', img: 'php.svg' },
+    { titulo: 'Laravel', img: 'laravel.svg' },
+    { titulo: 'Composer', img: 'compositor.svg' },
   ];
   constructor() {}
 

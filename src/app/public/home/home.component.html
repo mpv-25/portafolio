@@ -1,21 +1,17 @@
 <div class="container animated fast">
   <div
-    class="
-      row
-      flex-column flex-md-row
-      m-3 m-lg-5
-      justify-content-around
-      animated
-      fadeIn
-    "
+    class="row flex-column flex-md-row m-3 m-lg-5 justify-content-around animated fadeIn"
   >
-    <div class="col m-2">
-      <p class="home-txt">Hola me llamo</p>
-      <h1 class="home-titulo txt-neon">Matias Melanio Pinto Vázquez</h1>
-      <h2 class="home-txt">
-        Desarrollador web <span class="txt-neon">Front-End</span> y
-        <span class="txt-neon">Back-End</span>.
-      </h2>
+    <div
+      class="col m-2 text-center d-flex flex-column justify-content-center align-items-center"
+    >
+      <div class="">
+        <p class="home-txt">Hola me llamo</p>
+        <h1 class="home-titulo txt-neon m-2">Matias Melanio Pinto Vázquez</h1>
+      </div>
+      <div class="">
+        <h2 class="home-txt">Desarrollador web</h2>
+      </div>
     </div>
     <div class="col-auto text-center m-2 animated fadeIn">
       <img class="home-img" [src]="'./assets/img/foto.jpg'" alt="foto" />
@@ -23,45 +19,11 @@
   </div>
   <div class="row justify-content-center">
     <div class="col-auto text-center">
-      <a
-        class="btn-box btn-neon"
-        routerLink="/acerca-de-mi"
-        routerLinkActive="active"
-        ><i class="fas fa-user-tie m-2"></i>SKILLS
-        <span id="span1"></span>
-        <span id="span2"></span>
-        <span id="span3"></span>
-        <span id="span4"></span>
-      </a>
+      <p class="home-txt">
+        “Estoy convencido de que la mitad de lo que separa a los emprendedores
+        exitosos de los que no triunfan es la perseverancia”
+      </p>
+      <cite class="home-txt">STEVE JOBS (1955 - 2011)</cite>
     </div>
   </div>
 </div>
-<html lang="en">
-  <head>
-    <meta name="google-signin-scope" content="profile email" />
-    <meta
-      name="google-signin-client_id"
-      content="YOUR_CLIENT_ID.apps.googleusercontent.com"
-    />
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
-  </head>
-  <body>
-    <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
-    <script>
-      function onSignIn(googleUser) {
-        // Useful data for your client-side scripts:
-        var profile = googleUser.getBasicProfile();
-        console.log("ID: " + profile.getId()); // Don't send this directly to your server!
-        console.log("Full Name: " + profile.getName());
-        console.log("Given Name: " + profile.getGivenName());
-        console.log("Family Name: " + profile.getFamilyName());
-        console.log("Image URL: " + profile.getImageUrl());
-        console.log("Email: " + profile.getEmail());
-
-        // The ID token you need to pass to your backend:
-        var id_token = googleUser.getAuthResponse().id_token;
-        console.log("ID Token: " + id_token);
-      }
-    </script>
-  </body>
-</html>
