@@ -32,7 +32,12 @@ export class SkillComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  mostrarForm(){
+    this.verForm = !this.verForm
+  }
   
-
+  cancelar(){
+    this.verForm = !this.verForm
+  }
 
 }

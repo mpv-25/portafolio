@@ -1,5 +1,6 @@
 <div class="row formulario-fondo-claro">
-  <form class="row mb-3">
+  <form *ngIf="verForm" 
+    class="row mb-3">
     <div class="row justify-content-start align-items-end ">
       <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3">
         <img src="./assets/img/iconos/angular.svg"
@@ -30,14 +31,23 @@
         />
       </div>
     </div>
+
+    <div class="d-grid gap-2 d-md-block">
+      <button class="btn btn-primary" type="button">Nuevo</button>
+      <button (click)="cancelar()" 
+        type="button" class="btn btn-danger">Cancelar</button>
+    </div>
+
   </form>
-  <div class="row">
+  <div *ngIf="!verForm" 
+    class="row">
     <div class="col">
       <div class="row mb-2">
         <h5 for="lista-skills" class="form-label txt-neon text-center">Skills Encontradas</h5>
       </div>
       <div class="d-grid col-12 col-sm-6 mx-auto mb-2">
-        <button type="button" class="btn btn-outline-primary" >Nueva Skill</button>
+        <button (click)="mostrarForm()" 
+        type="button" class="btn btn-outline-primary" >Nueva Skill</button>
       </div>
       <ul class="list-group" id="lista-skills">
         <button type="button" *ngFor="let skill of skills" class="list-group-item list-group-item-action">
