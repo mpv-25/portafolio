@@ -26,6 +26,7 @@ export class ContactoComponent implements OnInit {
       urlOnline: [''],
       mensaje: ['', [Validators.required, Validators.minLength(10)]],
       fecha: ['', [Validators.required]],
+      hora: ['', [Validators.required, Validators.minLength(5)]],
     });
   }
 
@@ -63,6 +64,13 @@ export class ContactoComponent implements OnInit {
       false
     );
   }
+  get errorHora(): boolean {
+    return (
+      (this.formularioContacto.get('hora')?.invalid &&
+        this.formularioContacto.get('hora')?.touched) ||
+      false
+    );
+  }
 
   get validEmpresa(): boolean {
     return this.formularioContacto.get('empresa')?.valid || false;
@@ -76,6 +84,10 @@ export class ContactoComponent implements OnInit {
     return this.formularioContacto.get('fecha')?.valid || false;
   }
 
+  get validHora(): boolean {
+    return this.formularioContacto.get('hora')?.valid || false;
+  }
+
   //Funtions
   agregarMarcador(event: any) {
     if (this.validEmpresa && this.validCorreo && this.validFecha) {
@@ -85,6 +97,7 @@ export class ContactoComponent implements OnInit {
         this.formularioContacto.get('empresa')?.value || '';
       nuevoMarcador.correo = this.formularioContacto.get('correo')?.value || '';
       nuevoMarcador.fecha = this.formularioContacto.get('fecha')?.value || '';
+      nuevoMarcador.hora = this.formularioContacto.get('hora')?.value || '';
 
       this.marcadores[0] = nuevoMarcador;
       //Hacer click al mapa

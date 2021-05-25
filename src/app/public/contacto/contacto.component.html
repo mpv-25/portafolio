@@ -43,31 +43,60 @@
             Correo de RRHH en caso de que necesite contactarme con ustedes.
           </div>
         </div>
-        <div class="mb-3 d-flex flex-column">
-          <div>
-            <label class="mb-1 txt-neon">Fecha de Reunión </label>
-            <span *ngIf="errorFecha" class="contacto-text-error m-2">*</span>
-          </div>
-          <div class="">
-            <input
-              [disabled]="true"
-              formControlName="fecha"
-              class="contacto-input-fecha"
-              [ngClass]="{ 'contacto-input-error': errorFecha }"
-              matInput
-              [matDatepicker]="picker2"
-              placeholder="Día/Mes/Año"
-            />
-            <mat-datepicker-toggle
-              class="btn-fecha"
-              matSuffix
-              [for]="picker2"
-            ></mat-datepicker-toggle>
 
-            <mat-datepicker #picker2 [disabled]="false"></mat-datepicker>
+        <div class="row mb-3 d-flex  flex-column flex-md-row">
+          <div class="col-12 col-md-6">
+            <div>
+              <label class="mb-1 txt-neon">Fecha de Reunión </label>
+              <span *ngIf="errorFecha" class="contacto-text-error m-2">*</span>
+            </div>
+            <div class="">
+              <input
+                [disabled]="true"
+                formControlName="fecha"
+                class="contacto-input-fecha"
+                [ngClass]="{ 'contacto-input-error': errorFecha }"
+                matInput
+                [matDatepicker]="picker2"
+                placeholder="Día/Mes/Año"
+              />
+              <mat-datepicker-toggle
+                class="btn-fecha"
+                matSuffix
+                [for]="picker2"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #picker2 [disabled]="false"></mat-datepicker>
+            </div>
+            <div class="form-text">Seleccione una fecha del calendario.</div>
           </div>
-          <div class="form-text">Seleccione una fecha del calendario.</div>
+	  <div class="col-12 col-md-6 d-flex flex-column justify-content-between">
+            <div>
+              <label class="mb-1 txt-neon">Hora de Reunión </label>
+              <span *ngIf="errorHora" class="contacto-text-error m-2">*</span>
+            </div>
+            <div class="">
+              <select
+		class="contacto-input-hora text-center"
+                formControlName="hora"
+                [ngClass]="{ 'contacto-input-error': errorHora }"
+              >
+                <option value="">Hora de reunión</option>
+                <option value="08:00">08:00</option>
+                <option value="09:00">09:00</option>
+                <option value="10:00">10:00</option>
+                <option value="11:00">11:00</option>
+                <option value="12:00">12:00</option>
+                <option value="13:00">13:00</option>
+                <option value="14:00">14:00</option>
+                <option value="15:00">15:00</option>
+                <option value="16:00">16:00</option>
+                <option value="17:00">17:00</option>
+              </select>
+            </div>
+            <div class="form-text">Seleccione una hora.</div>
+          </div>
         </div>
+
         <div class="mb-3">
           <label class="mb-1 txt-neon">Tipo de Reunión </label>
           <div class="mb-1 d-flex flex-row justify-content-around">
@@ -116,19 +145,20 @@
               validEmpresa &&
               validCorreo &&
               validFecha &&
+              validHora &&
               marcadores.length == 0
             "
             class="contacto-text-error m-2"
             >*</span
           >
           <div
-            *ngIf="validEmpresa && validCorreo && validFecha"
+            *ngIf="validEmpresa && validCorreo && validFecha && validHora"
             class="form-text"
           >
             Click sobre la ubicación de la reunión.
           </div>
           <div
-            *ngIf="!validEmpresa && !validCorreo && !validFecha"
+            *ngIf="!validEmpresa && !validCorreo && !validFecha!; validHora"
             class="form-text mb-3"
           >
             Completar los campos empresa, correo y fecha para poder indicar la
@@ -141,6 +171,7 @@
                 !validEmpresa &&
                 !validCorreo &&
                 !validFecha &&
+                !validHora &&
                 marcadores.length == 0
             }"
             class="mb-3 contacto-mapa"
@@ -158,11 +189,13 @@
                 [longitude]="marcador.lng"
               >
                 <agm-info-window>
-                  <div>
-                    <strong class="color-negro">{{ marcador.titulo }}</strong>
-                    <p class="color-negro">{{ marcador.correo }}</p>
+                  <div class="text-center">
+                    <strong class="color-negro">{{ "Reunión" }}</strong>
                     <p class="color-negro">
-                      {{ marcador.fecha | date: "fullDate" }}
+                      Fecha: {{ marcador.fecha | date: "fullDate" }}
+                    </p>
+                    <p class="color-negro">
+                      {{ "Hora: " + marcador.hora + " hs." }}
                     </p>
                   </div>
                 </agm-info-window>

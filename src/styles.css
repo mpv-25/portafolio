@@ -465,10 +465,7 @@ agm-map {
   border: 1px solid var(--color-alert);
   border-radius: 6px;
 }
-.contacto-input-fecha {
-  width: 30%;
-  margin: 0 5px;
-}
+
 .contacto-mapa {
   border: 2px solid var(--color-neon);
   margin: 10px;
@@ -626,5 +623,11 @@ agm-map {
   }
   .home-titulo {
     font-size: 0.5em;
+  }
+  /* ====================================
+ ***************CONTACTO********************
+ *=====================================*/
+  .btn-contacto {
+    font-size: 1em;
   }
 }
