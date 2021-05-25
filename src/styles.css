@@ -400,6 +400,9 @@ agm-map {
 /* ====================================
  ***************HOME********************
  *=====================================*/
+.home {
+  margin-top: 5%;
+}
 .home-txt {
   color: var(--color-texto-claro);
   line-height: 40px;
@@ -414,8 +417,8 @@ agm-map {
 }
 
 .home-img {
-  width: 250px;
-  max-width: 100%;
+  width: 100%;
+  max-width: 250px;
   border: 1px solid var(--color-neon);
   border-radius: 5px;
 }
@@ -615,6 +618,10 @@ agm-map {
   /* ====================================
  ***************HOME********************
  *=====================================*/
+  .home {
+    margin-top: 25%;
+  }
+
   .home-txt {
     line-height: 20px;
     letter-spacing: 1px;
