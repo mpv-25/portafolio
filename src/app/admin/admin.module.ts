@@ -10,9 +10,10 @@ import { UsuarioComponent } from './usuario/usuario.component';
 import { TopNavComponent } from './components/top-nav/top-nav.component';
 import { LeftNavComponent } from './components/left-nav/left-nav.component';
 import { SkillComponent } from './skill/skill.component';
+import { ProyectoComponent } from './proyecto/proyecto.component';
 
 @NgModule({
-  declarations: [AdminComponent, UsuarioComponent, TopNavComponent, LeftNavComponent, SkillComponent],
+  declarations: [AdminComponent, UsuarioComponent, TopNavComponent, LeftNavComponent, SkillComponent, ProyectoComponent],
   imports: [CommonModule, AdminRoutingModule],
 })
 export class AdminModule {}

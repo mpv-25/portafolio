@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 //Components
 import { AdminComponent } from './admin.component';
+import { ProyectoComponent } from './proyecto/proyecto.component';
 import { SkillComponent } from './skill/skill.component';
 import { UsuarioComponent } from './usuario/usuario.component';
 
@@ -14,6 +15,8 @@ const routes: Routes = [
       { path: '', pathMatch: 'full', redirectTo: 'usuario' },
       { path: 'usuario', component: UsuarioComponent },
       { path: 'skill', component: SkillComponent },
+      { path: 'proyecto', component: ProyectoComponent },
+
 
     ],
   },
