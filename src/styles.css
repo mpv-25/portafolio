@@ -3,6 +3,8 @@
 ***********GENERAL***********
 ============================*/
 
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;300;400;700&display=swap");
+
 * {
   --color-fondo: #0e0f11;
   --color-neon: #0a8cbf;
@@ -18,9 +20,9 @@
 }
 
 body {
-  background: var(--color-fondo);
-  font-family: "Inconsolata", monospace;
+  font-family: "Pattaya", sans-serif;
   font-size: 18px;
+  background: var(--color-fondo);
   line-height: 24px;
 }
 
@@ -188,6 +190,138 @@ agm-map {
   color: var(--color-texto-claro);
   box-shadow: 0 0 20px var(--color-facebook);
 }
+/* ====================================
+ *ESTILOS DE CAJA HOME CON EFECTOS DE NEON
+ *=====================================*/
+@keyframes bordes-caja-neon {
+  from {
+    color: var(--color-texto-claro);
+  }
+  to {
+    color: var(--color-texto-claro);
+    box-shadow: 0 0 10px var(--color-neon), 0 0 40px var(--color-neon),
+      0 0 80px var(--color-neon);
+  }
+}
+@keyframes borde-superior {
+  from {
+    left: -100%;
+  }
+  to {
+    left: 100%;
+  }
+}
+@keyframes borde-derecho {
+  from {
+    top: -100%;
+  }
+  to {
+    top: 100%;
+  }
+}
+@keyframes borde-inferior {
+  from {
+    right: -100%;
+  }
+  to {
+    right: 100%;
+  }
+}
+@keyframes borde-izquierdo {
+  from {
+    bottom: -100%;
+  }
+  to {
+    bottom: 100%;
+  }
+}
+.box-neon {
+  position: relative;
+  padding: 15px 25px;
+  overflow: hidden;
+  transition: 0.2s;
+  width: 90%;
+}
+.box-neon {
+  animation-name: bordes-caja-neon;
+  animation-duration: 1s;
+  animation-delay: 1s;
+}
+
+/* ==========================================
+ *ESTILOS DEL EFECTO DE LINEAS EN MOVIMIENTO
+ *===========================================*/
+/*======================================
+ *CONFIGURACIONES GENERALES DE LA LINEAS
+ *======================================*/
+.box-neon span {
+  position: absolute;
+  display: block;
+}
+/*==============
+ *LINEA SUPERIOR
+ *==============*/
+#span1-box {
+  top: 0;
+  width: 100%;
+  height: 2px;
+  left: -100%;
+  background: linear-gradient(90deg, transparent, var(--color-neon));
+}
+#span1-box {
+  animation: borde-superior;
+  animation-duration: 1s;
+  animation-iteration-count: initial;
+}
+/*==============
+ *LINEA INFERIOR
+ *==============*/
+#span3-box {
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  right: -100%;
+  background: linear-gradient(270deg, transparent, var(--color-neon));
+}
+#span3-box {
+  animation-name: borde-inferior;
+  animation-duration: 1s;
+  animation-delay: 0.5s;
+  animation-iteration-count: initial;
+}
+/*===================
+ *LINEA DE LA DERECHA
+ *===================*/
+#span2-box {
+  right: 0;
+  width: 2px;
+  height: 100%;
+  top: -100%;
+  background: linear-gradient(180deg, transparent, var(--color-neon));
+}
+#span2-box {
+  animation-name: borde-derecho;
+  animation-duration: 1s;
+  animation-delay: 0.25s;
+  animation-iteration-count: initial;
+}
+/*=====================
+ *LINEA DE LA IZQUIERDA
+ *=====================*/
+
+#span4-box {
+  left: 0;
+  width: 2px;
+  height: 100%;
+  bottom: -100%;
+  background: linear-gradient(360deg, transparent, var(--color-neon));
+}
+#span4-box {
+  animation-name: borde-izquierdo;
+  animation-duration: 1s;
+  animation-delay: 0.75s;
+  animation-iteration-count: initial;
+}
 
 /* ====================================
  *ADMIN
@@ -270,17 +404,15 @@ agm-map {
   color: var(--color-texto-claro);
   line-height: 40px;
   letter-spacing: 2px;
-  font-size: 2em;
+  font-size: 1.5em;
+  font-weight: 200;
+}
+.home-titulo {
+  font-size: 1em;
   font-weight: 400;
+  color: var(--color-texto-claro);
 }
-.home-titulo,
-.home-txt {
-  display: inline-block;
-  margin: 0 5px;
-}
-.btn-home {
-  font-size: 3em;
-}
+
 .home-img {
   width: 250px;
   max-width: 100%;
@@ -305,19 +437,17 @@ agm-map {
   margin: 0 5px;
 }
 .btn-contacto {
+  font-size: 1.5em;
+  font-weight: 200;
   text-decoration: none;
   padding: 2.5px 5px;
   color: var(--color-texto-claro);
   background-color: var(--color-fondo);
-  border-radius: 6px;
-  border: 1px solid var(--color-neon);
+  border: none;
   width: 40%;
   margin: 10px auto;
 }
-.btn-contacto:hover {
-  color: var(--color-neon);
-  border: 1px solid var(--color-texto-claro);
-}
+
 .btn-fecha {
   display: inline-block;
   text-align: center;
@@ -479,15 +609,12 @@ agm-map {
   .btn-facebook {
     margin-top: 10px;
   }
-
   /* ====================================
  ***************NAVBAR********************
  *=====================================*/
-
   .navbar-logo {
     font-size: 1.5em;
   }
-
   /* ====================================
  ***************HOME********************
  *=====================================*/
@@ -498,22 +625,6 @@ agm-map {
     font-weight: 400;
   }
   .home-titulo {
-    font-size: 1em;
+    font-size: 0.5em;
   }
-  .home-titulo,
-  .home-txt {
-    margin: 0 3px;
-  }
-  .btn-home {
-    font-size: 2em;
-  }
-}
-
-html,
-body {
-  height: 100%;
-}
-body {
-  margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
 }
