@@ -7,6 +7,7 @@
       ><span class="logo-texto">./mpv</span>
     </a>
     <button
+      id="btn-menu-movil"
       class="navbar-toggler"
       type="button"
       data-bs-toggle="collapse"
@@ -26,24 +27,28 @@
           class="nav-link m-2"
           routerLink="/home"
           routerLinkActive="active"
+          (click)="cerrarMenuMovil()"
           ><i class="fas fa-home m-2"></i> Home</a
         >
         <a
           class="nav-link m-2"
           routerLink="/proyectos"
           routerLinkActive="active"
+          (click)="cerrarMenuMovil()"
           ><i class="fas fa-briefcase m-2"></i>Proyectos</a
         >
         <a
           class="nav-link m-2"
           routerLink="/acerca-de-mi"
           routerLinkActive="active"
+          (click)="cerrarMenuMovil()"
           ><i class="fas fa-user-tie m-2"></i>Acerca de mi</a
         >
         <a
           class="nav-link m-2"
           routerLink="/contacto"
           routerLinkActive="active"
+          (click)="cerrarMenuMovil()"
           ><i class="fas fa-comments m-2"></i> Contacto</a
         >
       </div>

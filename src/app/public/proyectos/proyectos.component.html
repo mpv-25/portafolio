@@ -1,58 +1,31 @@
 <div class="row justify-content-center animated fast">
   <div
-    *ngFor="let cont of [1, 2, 3, 4, 5, 6, 7, 8]"
+    *ngFor="let proyecto of proyectos"
     class="col-auto text-center animated fadeIn"
   >
     <div class="proyecto">
-      <h3 class="proyecto-titulo">Titulo del Proyecto</h3>
+      <h3 class="proyecto-titulo">{{ proyecto.titulo }}</h3>
       <p class="proyecto-detalles">
-        Detalles del proyecto, el detalle de un proyecto puede tener varias
-        lineas de texto, no es ni muy largo ni muy corto
+        {{ proyecto.desc }}
       </p>
       <ul class="proyecto-lista-iconos">
-        <li class="proyecto-icono">
+        <li *ngFor="let skill of proyecto.tecnologias" class="proyecto-icono">
           <img
             class="proyecto-svg"
-            [src]="'./assets/img/iconos/html.svg'"
+            [src]="'./assets/img/iconos/' + skill.img"
             alt=""
             data-bs-toggle="tooltip"
             data-bs-placement="top"
-            title="HTML5"
-          />
-        </li>
-        <li class="proyecto-icono">
-          <img
-            class="proyecto-svg"
-            [src]="'./assets/img/iconos/css.svg'"
-            alt=""
-            data-bs-toggle="tooltip"
-            data-bs-placement="top"
-            title="CSS3"
-          />
-        </li>
-        <li class="proyecto-icono">
-          <img
-            class="proyecto-svg"
-            [src]="'./assets/img/iconos/js.svg'"
-            alt=""
-            data-bs-toggle="tooltip"
-            data-bs-placement="top"
-            title="Javascript E6"
-          />
-        </li>
-        <li class="proyecto-icono">
-          <img
-            class="proyecto-svg"
-            [src]="'./assets/img/iconos/jquery.svg'"
-            alt=""
-            data-bs-toggle="tooltip"
-            data-bs-placement="top"
-            title="Jquery"
+            title="{{ skill.titulo }}"
           />
         </li>
       </ul>
       <div class="m-1">
-        <a class="btn-box btn-neon btn-proyecto" href="#">
+        <a
+          class="btn-box btn-neon btn-proyecto"
+          href="{{ proyecto.github }}"
+          target="_blank"
+        >
           <span id="span1"></span>
           <span id="span2"></span>
           <span id="span3"></span>

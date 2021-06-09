@@ -37,7 +37,6 @@
 
 .header {
   width: 100%;
-  background: var(--color-fondo-negro);
   height: 50px;
 }
 /*=========================
@@ -57,6 +56,7 @@
   align-items: center;
   width: 100%;
   margin: auto;
+  text-align: center;
 }
 .nav__li {
   list-style: none;
@@ -123,7 +123,6 @@
   position: relative;
   max-width: 70%;
   margin: 10px auto;
-  z-index: 3;
 }
 .imagen__oscura {
   position: absolute;
@@ -195,41 +194,198 @@
   * {
     font-size: 14px;
   }
+  .titulo {
+    font-size: 2rem;
+  }
+
+  /*=========================
+ *HEADER
+ *========================*/
+
+  .header {
+    height: 30px;
+  }
+  /*=========================
+ *NAV
+ *========================*/
+
+  .nav {
+    padding: 5px;
+  }
+  .nav__ul {
+    flex-wrap: nowrap;
+  }
+  .nav__li {
+    margin: auto 10px;
+  }
+  .nav__a {
+    font-size: 1rem;
+  }
+
   /*=========================
  *ASIDE
  *========================*/
 
   .aside {
     width: 40%;
+    height: 100%;
   }
+  .aside__span {
+    font-size: 0.7rem;
+  }
+  .aside__titulo {
+    font-size: 1rem;
+  }
+  .aside__texto {
+    font-size: 0.8rem;
+    line-height: 1rem;
+  }
+
   /*=========================
  *SECTION
  *========================*/
 
   .section {
     width: 60%;
+    padding-bottom: 0;
+  }
+
+  /*=========================
+ *ARTICLE
+ *========================*/
+
+  .article__titulo {
+    font-size: 1.5rem;
+  }
+  .article__year {
+    font-size: 1rem;
+    margin-top: 5px;
+  }
+
+  .article__texto {
+    font-size: 1rem;
+    font-weight: 300;
+    line-height: 1.3rem;
+    margin-bottom: 0;
   }
 }
-@media screen and (max-width: 414px) {
+@media screen and (max-width: 450px) {
   /*=========================
  *CONFIGURACIÓN GENERAL
  *========================*/
 
   * {
-    font-size: 12px;
+    font-size: 11px;
   }
+
+  .titulo {
+    font-size: 1.5rem;
+    margin: 5px auto;
+    text-align: center;
+  }
+  /*=========================
+ *HEADER
+ *========================*/
+
   /*=========================
  *NAV
  *========================*/
-
+  .nav {
+    padding: 0;
+  }
+  .nav__ul {
+    padding: 0;
+  }
   .nav__li {
-    margin: auto 8px;
+    margin: auto;
   }
   .nav__a {
+    font-size: 0.6rem;
+  }
+  /*=========================
+ *MAIN
+ *========================*/
+
+  .main {
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+  /*=========================
+ *ASIDE
+ *========================*/
+
+  .aside {
+    display: flex;
+    flex-direction: column;
+    word-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    background: var(--color-aside-inferior);
+  }
+  .aside__informacion {
+    width: 95%;
+    margin: 5px auto;
+  }
+  .aside__span {
+    font-size: 0.7rem;
+    font-weight: 300;
+  }
+  .aside__hr {
+    width: 100%;
+    color: var(--color-fondo-main);
+    margin: 5px auto;
+  }
+  .aside__titulo {
     font-size: 1rem;
+    font-weight: 400;
+  }
+  .aside__texto {
+    font-size: 1rem;
+    line-height: 1rem;
+  }
+  .imagen {
+    position: relative;
+    max-width: 70%;
+    margin: 5px auto;
+    z-index: 3;
+  }
+  .img {
+    max-width: 100%;
+    margin: 10px auto;
+    border: 1px solid var(--color-titulo);
+  }
+  /*=========================
+ *SECTION
+ *========================*/
+
+  .section {
+    width: 100%;
+    padding: 10px;
+  }
+  /*=========================
+ *ARTICLE
+ *========================*/
+
+  .article {
+    margin-top: 5px;
+  }
+  .article__titulo {
+    font-size: 1rem;
+    margin-bottom: 5px;
+  }
+  .article__year {
+    font-size: 1rem;
+    margin-top: 1px;
+  }
+  .article__texto {
+    font-size: 1rem;
+    line-height: 1.3rem;
   }
 }
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 350px) {
   /*=========================
  *HEADER
  *========================*/
@@ -241,7 +397,18 @@
  *NAV
  *========================*/
 
+  .nav {
+    padding: 2px;
+  }
+  .nav__ul {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+  }
   .nav__li {
-    margin: auto 5px;
+    margin: auto 2px;
+  }
+  .nav__a {
+    font-size: 0.7rem;
   }
 }

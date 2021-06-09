@@ -32,8 +32,8 @@ export class VerCurriculumComponent implements OnInit {
         this.socialUser = user;
         this.isLoggedin = true;
         localStorage.setItem('usuario', JSON.stringify(this.socialUser));
+        console.log(localStorage.getItem('usuario'));
         this.router.navigate(['curriculum']);
-        console.log('Ingreso al curriculum');
       },
       (err) => {
         console.warn('ERROR!!!');

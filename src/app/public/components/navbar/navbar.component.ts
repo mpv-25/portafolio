@@ -10,4 +10,11 @@ export class NavbarComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
+
+  cerrarMenuMovil() {
+    if (screen.width <= 800) {
+      let menuMovil = document.getElementById('btn-menu-movil');
+      menuMovil?.click();
+    }
+  }
 }
