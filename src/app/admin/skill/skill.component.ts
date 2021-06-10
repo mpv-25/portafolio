@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Skill } from '../models/skill-dto';
 
 @Component({
   selector: 'app-skill',
@@ -25,6 +26,8 @@ export class SkillComponent implements OnInit {
     { titulo: 'TypeScript', img: 'typescript.svg' },
   ];
   
+
+
   verForm: boolean = false;
 
   constructor() { }
