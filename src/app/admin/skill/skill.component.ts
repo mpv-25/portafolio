@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Skill } from '../models/skill-dto';
 
 @Component({
   selector: 'app-skill',
