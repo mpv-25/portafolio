@@ -29,8 +29,10 @@
             "assets": ["src/favicon.ico", "src/assets"],
             "styles": [
               "./src/assets/css/normalize.css",
+              "./src/custom-theme.scss",
               "./src/assets/css/bootstrap.css",
-              "./src/styles.css"
+              "./src/styles.css",
+              "./src/assets/css/google-sign.scss"
             ],
             "scripts": []
           },

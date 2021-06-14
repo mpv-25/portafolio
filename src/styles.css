@@ -3,22 +3,59 @@
 ***********GENERAL***********
 ============================*/
 
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;300;400;700&display=swap");
+
 * {
   --color-fondo: #0e0f11;
   --color-neon: #0a8cbf;
   --color-texto-claro: #fff;
   --color-gris-claro: #d3d3d3;
   --color-success: #22bb33;
+  --color-alert: #fd1532;
+  --color-facebook: #3b5998;
+
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
 body {
+  font-family: "Pattaya", sans-serif;
+  font-size: 18px;
   background: var(--color-fondo);
-  font-family: "Inconsolata", monospace;
-  font-size: 20px;
   line-height: 24px;
+}
+
+/*===========================
+***********ANIMATED***********
+============================*/
+
+.animated {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+.fast {
+  -webkit-animation-duration: 0.4s;
+  animation-duration: 0.4s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.fadeIn {
+  animation-name: fadeIn;
 }
 
 /* ====================================
@@ -32,6 +69,13 @@ body {
 .wrapper {
   margin: 0px auto;
   min-height: calc(100% - 4rem);
+  min-width: 100%;
+}
+/* ====================================
+ *ESTILOS DE ANGULAR MAPS
+ *=====================================*/
+agm-map {
+  height: 300px;
 }
 
 /* ====================================
@@ -39,7 +83,7 @@ body {
  *=====================================*/
 
 .txt-neon {
-  color: var(--color-neon);
+  color: var(--color-texto-claro);
   text-shadow: 0 0 2.5px var(--color-neon), 0 0 10px var(--color-neon),
     0 0 20px var(--color-neon);
 }
@@ -50,25 +94,235 @@ body {
 .btn-neon {
   position: relative;
   display: inline-block;
-  padding: 10px 15px;
+  padding: 15px 25px;
   color: var(--color-texto-claro);
   letter-spacing: 4px;
-  font-size: 1em;
   text-decoration: none;
   overflow: hidden;
-  transition: 0.1s;
-  border: 1px solid var(--color-fondo);
-  border-radius: 10px;
-  margin: 2px 10px;
+  transition: 0.2s;
 }
 .btn-neon:hover {
   background: var(--color-neon);
   box-shadow: 0 0 10px var(--color-neon), 0 0 40px var(--color-neon),
     0 0 80px var(--color-neon);
-  transition-delay: 0.5s;
-  color: var(--color-fondo);
-  border-color: var(--color-neon);
+  transition-delay: 1s;
+  color: var(--color-texto-claro);
 }
+
+/* ==========================================
+ *ESTILOS DEL EFECTO DE LINEAS EN MOVIMIENTO
+ *===========================================*/
+/*======================================
+ *CONFIGURACIONES GENERALES DE LA LINEAS
+ *======================================*/
+.btn-neon span {
+  position: absolute;
+  display: block;
+}
+/*==============
+ *LINEA SUPERIOR
+ *==============*/
+#span1 {
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--color-neon));
+}
+.btn-neon:hover #span1 {
+  left: 100%;
+  transition: 1s;
+}
+/*==============
+ *LINEA INFERIOR
+ *==============*/
+#span3 {
+  bottom: 0;
+  right: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(270deg, transparent, var(--color-neon));
+}
+.btn-neon:hover #span3 {
+  right: 100%;
+  transition: 1s;
+  transition-delay: 0.5s;
+}
+/*===================
+ *LINEA DE LA DERECHA
+ *===================*/
+#span2 {
+  top: -100%;
+  right: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(180deg, transparent, var(--color-neon));
+}
+.btn-neon:hover #span2 {
+  top: 100%;
+  transition: 1s;
+  transition-delay: 0.25s;
+}
+/*=====================
+ *LINEA DE LA IZQUIERDA
+ *=====================*/
+
+#span4 {
+  bottom: -100%;
+  left: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(360deg, transparent, var(--color-neon));
+}
+.btn-neon:hover #span4 {
+  bottom: 100%;
+  transition: 1s;
+  transition-delay: 0.75s;
+}
+/* ====================================
+ *Botn de facebook
+ *=====================================*/
+.btn-facebook {
+  background-color: var(--color-facebook);
+  color: var(--color-texto-claro);
+}
+.btn-facebook:hover {
+  color: var(--color-texto-claro);
+  box-shadow: 0 0 20px var(--color-facebook);
+}
+/* ====================================
+ *ESTILOS DE CAJA HOME CON EFECTOS DE NEON
+ *=====================================*/
+@keyframes bordes-caja-neon {
+  from {
+    color: var(--color-texto-claro);
+  }
+  to {
+    color: var(--color-texto-claro);
+    box-shadow: 0 0 10px var(--color-neon), 0 0 40px var(--color-neon),
+      0 0 80px var(--color-neon);
+  }
+}
+@keyframes borde-superior {
+  from {
+    left: -100%;
+  }
+  to {
+    left: 100%;
+  }
+}
+@keyframes borde-derecho {
+  from {
+    top: -100%;
+  }
+  to {
+    top: 100%;
+  }
+}
+@keyframes borde-inferior {
+  from {
+    right: -100%;
+  }
+  to {
+    right: 100%;
+  }
+}
+@keyframes borde-izquierdo {
+  from {
+    bottom: -100%;
+  }
+  to {
+    bottom: 100%;
+  }
+}
+.box-neon {
+  position: relative;
+  padding: 15px 25px;
+  overflow: hidden;
+  transition: 0.2s;
+  width: 90%;
+}
+.box-neon {
+  animation-name: bordes-caja-neon;
+  animation-duration: 1s;
+  animation-delay: 1s;
+}
+
+/* ==========================================
+ *ESTILOS DEL EFECTO DE LINEAS EN MOVIMIENTO
+ *===========================================*/
+/*======================================
+ *CONFIGURACIONES GENERALES DE LA LINEAS
+ *======================================*/
+.box-neon span {
+  position: absolute;
+  display: block;
+}
+/*==============
+ *LINEA SUPERIOR
+ *==============*/
+#span1-box {
+  top: 0;
+  width: 100%;
+  height: 2px;
+  left: -100%;
+  background: linear-gradient(90deg, transparent, var(--color-neon));
+}
+#span1-box {
+  animation: borde-superior;
+  animation-duration: 1s;
+  animation-iteration-count: initial;
+}
+/*==============
+ *LINEA INFERIOR
+ *==============*/
+#span3-box {
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  right: -100%;
+  background: linear-gradient(270deg, transparent, var(--color-neon));
+}
+#span3-box {
+  animation-name: borde-inferior;
+  animation-duration: 1s;
+  animation-delay: 0.5s;
+  animation-iteration-count: initial;
+}
+/*===================
+ *LINEA DE LA DERECHA
+ *===================*/
+#span2-box {
+  right: 0;
+  width: 2px;
+  height: 100%;
+  top: -100%;
+  background: linear-gradient(180deg, transparent, var(--color-neon));
+}
+#span2-box {
+  animation-name: borde-derecho;
+  animation-duration: 1s;
+  animation-delay: 0.25s;
+  animation-iteration-count: initial;
+}
+/*=====================
+ *LINEA DE LA IZQUIERDA
+ *=====================*/
+
+#span4-box {
+  left: 0;
+  width: 2px;
+  height: 100%;
+  bottom: -100%;
+  background: linear-gradient(360deg, transparent, var(--color-neon));
+}
+#span4-box {
+  animation-name: borde-izquierdo;
+  animation-duration: 1s;
+  animation-delay: 0.75s;
+  animation-iteration-count: initial;
+}
+
 /* ====================================
  *ADMIN
  *=====================================*/
@@ -148,7 +402,83 @@ body {
 /* ====================================
  *PUBLIC
  *=====================================*/
+/* ====================================
+ ***************HOME********************
+ *=====================================*/
+.home {
+  margin-top: 5%;
+}
+.home-txt {
+  color: var(--color-texto-claro);
+  line-height: 40px;
+  letter-spacing: 2px;
+  font-size: 1.5em;
+  font-weight: 200;
+}
+.home-titulo {
+  font-size: 1em;
+  font-weight: 400;
+  color: var(--color-texto-claro);
+}
 
+.home-img {
+  width: 100%;
+  max-width: 250px;
+  border: 1px solid var(--color-neon);
+  border-radius: 5px;
+}
+/* ====================================
+ *************CONTACTO*****************
+ *=====================================*/
+.contacto-txt,
+.btn-contacto,
+.btn-fecha {
+  color: var(--color-texto-claro);
+  line-height: 40px;
+  letter-spacing: 2px;
+  font-size: 1em;
+  font-weight: 400;
+}
+.contacto-titulo,
+.contacto-txt {
+  display: inline-block;
+  margin: 0 5px;
+}
+.btn-contacto {
+  font-size: 1.5em;
+  font-weight: 200;
+  text-decoration: none;
+  padding: 2.5px 5px;
+  color: var(--color-texto-claro);
+  background-color: var(--color-fondo);
+  border: none;
+  width: 40%;
+  margin: 10px auto;
+}
+
+.btn-fecha {
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  color: var(--color-texto-claro);
+  background-color: var(--color-fondo);
+}
+.contacto-text-error {
+  color: var(--color-alert);
+  font-weight: 300;
+  font-size: 1em;
+}
+.contacto-input-error {
+  box-shadow: 0 0 20px var(--color-alert);
+  border: 1px solid var(--color-alert);
+  border-radius: 6px;
+}
+
+.contacto-mapa {
+  border: 2px solid var(--color-neon);
+  margin: 10px;
+  border-radius: 6px;
+}
 /*===========================
 ************NAVBAR***********
 ============================*/
@@ -157,11 +487,12 @@ body {
 }
 
 .navbar-logo {
-  font-size: 2em;
+  text-decoration: none;
+  font-size: 3em;
   font-weight: 700;
 }
+
 .navbar-logo:hover {
-  font-weight: 400;
   color: var(--color-texto-claro);
 }
 
@@ -187,16 +518,36 @@ body {
 }
 .footer-logo:hover {
   color: var(--color-texto-claro);
-  font-weight: 400;
+}
+/*===========================
+************LOGO***********
+============================*/
+
+.logo-texto,
+.logo-icono {
+  font-size: 1em;
+  margin: 0 5px;
 }
 
+.logo-texto {
+  font-weight: 700;
+}
+
+.logo-icono {
+  font-weight: 400;
+}
 /*===========================
 ************PROYECTO*********
 ============================*/
 .proyecto {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   color: var(--color-texto-claro);
   border: 2px solid var(--color-neon);
   width: 300px;
+  max-width: 100%;
+  height: 300px;
   margin: 20px 10px;
   text-align: center;
 }
@@ -207,8 +558,8 @@ body {
   font-size: 1.5em;
   font-weight: 700;
 }
-.proyecto-detalle {
-  padding: 3px;
+.proyecto-detalles {
+  margin: 10px;
   font-size: 1em;
   font-weight: 300;
 }
@@ -229,13 +580,66 @@ body {
   width: 200px;
   height: 200px;
 }
+.btn-proyecto {
+  font-size: 0.7em;
+}
+
+/*===========================
+*********ACERCA-DE-MI********
+============================*/
+.acerca-de-mi-titulo {
+  font-size: 2em;
+  font-weight: 700;
+}
+.acerca-de-mi-txt {
+  font-size: 1em;
+  color: var(--color-texto-claro);
+  font-weight: 400;
+  line-height: 2em;
+}
+
+.acerca-de-mi-svg {
+  width: 100px;
+  border-radius: 10px;
+  margin: 10px;
+}
 
 /*===========================
 ***********RESPONSIVE********
 ============================*/
 @media only screen and (max-width: 800px) {
+  /* ====================================
+ *Botn de facebook
+ *=====================================*/
+  .btn-facebook {
+    margin-top: 10px;
+  }
+  /* ====================================
+ ***************NAVBAR********************
+ *=====================================*/
   .navbar-logo {
+    font-size: 1.5em;
+  }
+  /* ====================================
+ ***************HOME********************
+ *=====================================*/
+  .home {
+    margin-top: 25%;
+  }
+
+  .home-txt {
+    line-height: 20px;
+    letter-spacing: 1px;
+    font-size: 0.8em;
+    font-weight: 400;
+  }
+  .home-titulo {
+    font-size: 0.5em;
+  }
+  /* ====================================
+ ***************CONTACTO********************
+ *=====================================*/
+  .btn-contacto {
     font-size: 1em;
-    font-weight: 700;
   }
 }

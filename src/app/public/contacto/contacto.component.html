@@ -1,0 +1,235 @@
+<div class="container animated fast">
+  <div class="row justify-content-center">
+    <div class="col-auto txt-center">
+      <h3 class="contacto-txt">Agendar Reunión</h3>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-12 col-lg-6">
+      <form
+        class="d-flex flex-column justify-content-center"
+        [formGroup]="formularioContacto"
+        (ngSubmit)="enviarFormulario()"
+      >
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="mb-2 txt-neon">Empresa </label>
+          <span *ngIf="errorEmpresa" class="contacto-text-error m-2">*</span>
+          <input
+            formControlName="empresa"
+            type="text"
+            [ngClass]="{ 'contacto-input-error': errorEmpresa }"
+            class="form-control"
+            id="exampleInputEmail1"
+            aria-describedby="emailHelp"
+          />
+          <div id="emailHelp" class="form-text">
+            Nombre de la empresa, si es un particular nombre completo.
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="mb-2 txt-neon">Correo</label>
+          <span *ngIf="errorCorreo" class="contacto-text-error m-2">*</span>
+
+          <input
+            formControlName="correo"
+            type="email"
+            [ngClass]="{ 'contacto-input-error': errorCorreo }"
+            class="form-control"
+            id="exampleInputEmail1"
+            aria-describedby="emailHelp"
+          />
+          <div id="emailHelp" class="form-text">
+            Correo de RRHH en caso de que necesite contactarme con ustedes.
+          </div>
+        </div>
+
+        <div class="row mb-3 d-flex  flex-column flex-md-row">
+          <div class="col-12 col-md-6">
+            <div>
+              <label class="mb-1 txt-neon">Fecha de Reunión </label>
+              <span *ngIf="errorFecha" class="contacto-text-error m-2">*</span>
+            </div>
+            <div class="">
+              <input
+                [disabled]="true"
+                formControlName="fecha"
+                class="contacto-input-fecha"
+                [ngClass]="{ 'contacto-input-error': errorFecha }"
+                matInput
+                [matDatepicker]="picker2"
+                placeholder="Día/Mes/Año"
+              />
+              <mat-datepicker-toggle
+                class="btn-fecha"
+                matSuffix
+                [for]="picker2"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #picker2 [disabled]="false"></mat-datepicker>
+            </div>
+            <div class="form-text">Seleccione una fecha del calendario.</div>
+          </div>
+	  <div class="col-12 col-md-6 d-flex flex-column justify-content-between">
+            <div>
+              <label class="mb-1 txt-neon">Hora de Reunión </label>
+              <span *ngIf="errorHora" class="contacto-text-error m-2">*</span>
+            </div>
+            <div class="">
+              <select
+		class="contacto-input-hora text-center"
+                formControlName="hora"
+                [ngClass]="{ 'contacto-input-error': errorHora }"
+              >
+                <option value="">Hora de reunión</option>
+                <option value="08:00">08:00</option>
+                <option value="09:00">09:00</option>
+                <option value="10:00">10:00</option>
+                <option value="11:00">11:00</option>
+                <option value="12:00">12:00</option>
+                <option value="13:00">13:00</option>
+                <option value="14:00">14:00</option>
+                <option value="15:00">15:00</option>
+                <option value="16:00">16:00</option>
+                <option value="17:00">17:00</option>
+              </select>
+            </div>
+            <div class="form-text">Seleccione una hora.</div>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="mb-1 txt-neon">Tipo de Reunión </label>
+          <div class="mb-1 d-flex flex-row justify-content-around">
+            <div class="m-1 form-check">
+              <input
+                formControlName="tipoReunion"
+                class="form-check-input"
+                type="radio"
+                id="flexRadioDefault1"
+                value="presencial"
+              />
+              <label class="txt-neon" for="flexRadioDefault1">
+                Presencial
+              </label>
+            </div>
+            <div class="m-1 form-check">
+              <input
+                formControlName="tipoReunion"
+                class="form-check-input"
+                type="radio"
+                id="flexRadioDefault2"
+                value="online"
+              />
+              <label class="txt-neon" for="flexRadioDefault2"> Online </label>
+            </div>
+          </div>
+          <div *ngIf="reunion === 'online'" class="mb-3 animated fadeIn">
+            <label for="exampleInputEmail1" class="mb-2 txt-neon">URL</label>
+            <input
+              type="text"
+              class="form-control"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+            />
+            <div id="emailHelp" class="form-text">
+              URL de Meet o de Zoom otros URL no pasaran la verificación.
+            </div>
+          </div>
+        </div>
+        <div *ngIf="reunion === 'presencial'" class="mb-2 animated fadeIn">
+          <label for="exampleInputEmail1" class="txt-neon"
+            >Dirección de la reunión
+          </label>
+          <span
+            *ngIf="
+              validEmpresa &&
+              validCorreo &&
+              validFecha &&
+              validHora &&
+              marcadores.length == 0
+            "
+            class="contacto-text-error m-2"
+            >*</span
+          >
+          <div
+            *ngIf="validEmpresa && validCorreo && validFecha && validHora"
+            class="form-text"
+          >
+            Click sobre la ubicación de la reunión.
+          </div>
+          <div
+            *ngIf="!validEmpresa && !validCorreo && !validFecha!; validHora"
+            class="form-text mb-3"
+          >
+            Completar los campos empresa, correo y fecha para poder indicar la
+            ubicación.
+          </div>
+
+          <div
+            [ngClass]="{
+              'contacto-input-error':
+                !validEmpresa &&
+                !validCorreo &&
+                !validFecha &&
+                !validHora &&
+                marcadores.length == 0
+            }"
+            class="mb-3 contacto-mapa"
+          >
+            <agm-map
+              [zoom]="13"
+              [latitude]="lat"
+              [longitude]="lng"
+              (mapClick)="agregarMarcador($event)"
+            >
+              <agm-marker
+                id="mapa-google"
+                *ngFor="let marcador of marcadores; let i = index"
+                [latitude]="marcador.lat"
+                [longitude]="marcador.lng"
+              >
+                <agm-info-window>
+                  <div class="text-center">
+                    <strong class="color-negro">{{ "Reunión" }}</strong>
+                    <p class="color-negro">
+                      Fecha: {{ marcador.fecha | date: "fullDate" }}
+                    </p>
+                    <p class="color-negro">
+                      {{ "Hora: " + marcador.hora + " hs." }}
+                    </p>
+                  </div>
+                </agm-info-window>
+              </agm-marker>
+            </agm-map>
+          </div>
+        </div>
+
+        <div class="mb-3 form-floating">
+          <div>
+            <label for="exampleInputEmail1" class="mb-2 txt-neon"
+              >Mensaje
+            </label>
+            <span *ngIf="errorMensaje" class="contacto-text-error m-2">*</span>
+          </div>
+          <div>
+            <textarea
+              formControlName="mensaje"
+              class="form-control"
+              [ngClass]="{ 'contacto-input-error': errorMensaje }"
+              placeholder="Escriba un mensaje"
+              id="floatingTextarea2"
+              style="height: 100px"
+            ></textarea>
+          </div>
+        </div>
+        <button type="submit" class="btn-contacto btn-box btn-neon">
+          {{ "{" + " enviar " + "}" }}
+          <span id="span1"></span>
+          <span id="span2"></span>
+          <span id="span3"></span>
+          <span id="span4"></span>
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
