@@ -3,7 +3,7 @@
     class="row mb-3">
     <div class="row justify-content-start align-items-end ">
       <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3">
-        <img src="./assets/img/iconos/angular.svg"
+        <img src=""
           class="img-thumbnail thumbnail200 float-start"
         />
       </div>
@@ -50,9 +50,9 @@
         type="button" class="btn btn-outline-primary" >Nueva Skill</button>
       </div>
       <ul class="list-group" id="lista-skills">
-        <button type="button" *ngFor="let skill of skills" class="list-group-item list-group-item-action">
-          <img [src]="'./assets/img/iconos/' + skill.img"  class="icon32" alt="icon-skills">
-          {{skill.titulo}}
+        <button type="button" *ngFor="let item of skills.skills" class="list-group-item list-group-item-action">
+          <img [src]="item.img"  class="icon32" alt="icon-skills">
+          {{item.titulo}}
         </button>
       </ul>
     </div>

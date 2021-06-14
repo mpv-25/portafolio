@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Skill, Skills } from 'src/app/core/shared/models/portafolio.models';
+import { SkillsService } from '../services/skills.service';
 
 @Component({
   selector: 'app-skill',
@@ -8,30 +10,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SkillComponent implements OnInit {
 
+  public skill: Skill | undefined;
 
-
-  public skills: any[] = [
-    { titulo: 'HTML5', img: 'html.svg' },
-    { titulo: 'CSS3', img: 'css.svg' },
-    { titulo: 'Javascript E6', img: 'js.svg' },
-    { titulo: 'Bootstrap', img: 'bootstrap.svg' },
-    { titulo: 'Angular +4', img: 'angular.svg' },
-    { titulo: 'FireBase', img: 'firebase.svg' },
-    { titulo: 'Git & GitHub', img: 'git.svg' },
-    { titulo: 'Jquery', img: 'jquery.svg' },
-    { titulo: 'MongoDB & Mongoose', img: 'mongo.svg' },
-    { titulo: 'Node & Express', img: 'node.svg' },
-    { titulo: 'NPM', img: 'npm.svg' },
-    { titulo: 'TypeScript', img: 'typescript.svg' },
-  ];
-  
+  public skills: any = [];
 
 
   verForm: boolean = false;
 
-  constructor() { }
+  constructor(private skillDao: SkillsService) { }
 
   ngOnInit(): void {
+    this.skillDao.obtenerSkills()
+      .subscribe(skills => this.skills = skills)
   }
 
   mostrarForm(){
