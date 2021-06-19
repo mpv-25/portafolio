@@ -17,7 +17,7 @@ export class SkillsService {
   agregarSkill(skill: Skill){
 
     let header = new HttpHeaders()
-    header.append('token','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7Il9pZCI6IjYwYmQzODMwNzE5YTk5MTVjYzcwODEzZCIsIm5vbWJyZSI6ImVsZWN0aXZhMyIsImVtYWlsIjoiZWxlY3RpdmEzQGVsZWN0aXZhMy5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCRQbGNlRW9pMEQxYXY1QWhsZ2x0NVNPSjdReTJvSWoweUthc0YwV2UuWEJxZEZFbmR5VlhlMiIsIl9fdiI6MH0sImlhdCI6MTYyNDA2ODU0NiwiZXhwIjoxNjI0MDcyMTQ2fQ.zUCyrT0iBad-TPHqW70gyzSC4SqGZkQyqs5BiVnSTj0');
+    header.append('token','');
     return this.http.post(`${this.api}skill`,skill,{
       headers: header
     })
