@@ -3,17 +3,17 @@ export class Marcador {
 
   public lng: number;
 
-  public titulo = 'Sin título';
-
-  public correo = 'Sin correo';
-
   public fecha = 'Sin fecha';
 
   public hora = '00:00';
 
-  constructor(lat: number, lng: number) {
+  constructor(lat: number, lng: number, fecha: string, hora: string) {
     this.lat = lat;
 
     this.lng = lng;
+
+    this.fecha = fecha;
+
+    this.hora = hora;
   }
 }

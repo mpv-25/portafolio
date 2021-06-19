@@ -44,7 +44,7 @@
           </div>
         </div>
 
-        <div class="row mb-3 d-flex  flex-column flex-md-row">
+        <div class="row mb-3 d-flex flex-column flex-md-row">
           <div class="col-12 col-md-6">
             <div>
               <label class="mb-1 txt-neon">Fecha de Reunión </label>
@@ -69,14 +69,16 @@
             </div>
             <div class="form-text">Seleccione una fecha del calendario.</div>
           </div>
-	  <div class="col-12 col-md-6 d-flex flex-column justify-content-between">
+          <div
+            class="col-12 col-md-6 d-flex flex-column justify-content-between"
+          >
             <div>
               <label class="mb-1 txt-neon">Hora de Reunión </label>
               <span *ngIf="errorHora" class="contacto-text-error m-2">*</span>
             </div>
             <div class="">
               <select
-		class="contacto-input-hora text-center"
+                class="contacto-input-hora text-center"
                 formControlName="hora"
                 [ngClass]="{ 'contacto-input-error': errorHora }"
               >
@@ -126,10 +128,9 @@
           <div *ngIf="reunion === 'online'" class="mb-3 animated fadeIn">
             <label for="exampleInputEmail1" class="mb-2 txt-neon">URL</label>
             <input
+              formControlName="urlOnline"
               type="text"
               class="form-control"
-              id="exampleInputEmail1"
-              aria-describedby="emailHelp"
             />
             <div id="emailHelp" class="form-text">
               URL de Meet o de Zoom otros URL no pasaran la verificación.

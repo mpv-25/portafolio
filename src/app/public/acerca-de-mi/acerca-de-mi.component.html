@@ -20,6 +20,12 @@
   <div class="row justify-content-center animated fadeIn">
     <div class="col-12-auto text-center">
       <h3 class="acerca-de-mi-titulo txt-neon">SKILLS</h3>
+      <div
+        *ngIf="skills.length == 0"
+        class="row m-3 text-light animated fadeIn"
+      >
+        <i class="fas fa-spinner fa-pulse fa-5x"></i>
+      </div>
     </div>
     <div
       *ngFor="let skill of skills"

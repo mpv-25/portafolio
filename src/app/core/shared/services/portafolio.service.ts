@@ -1,19 +1,46 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Skills, Proyectos } from '../models/portafolio.models';
+import { environment } from 'src/environments/environment';
+import {
+  Skills,
+  Proyectos,
+  Reunion,
+  Visitante,
+  loginVisitante,
+} from '../models/portafolio.models';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PortafolioService {
-  private url = '';
-
   constructor(private http: HttpClient) {}
 
   getSkills() {
-    return this.http.get<Skills>('http://localhost:3000/api/skill');
+    return this.http.get<Skills>(`${environment.apiPortafolio}/api/skill`);
   }
   getProyectos() {
-    return this.http.get<Proyectos>('http://localhost:3000/api/proyecto');
+    return this.http.get<Proyectos>(
+      `${environment.apiPortafolio}/api/proyecto`
+    );
+  }
+
+  crearReunion(body: Reunion) {
+    return this.http.post<Reunion>(
+      `${environment.apiPortafolio}/api/reunion`,
+      body,
+      {
+        headers: { 'Content-Type': 'application/json' },
+      }
+    );
+  }
+
+  loginVisitante(body: Visitante) {
+    return this.http.post<loginVisitante>(
+      `${environment.apiPortafolio}/api/visitante`,
+      body,
+      {
+        headers: { 'Content-Type': 'application/json' },
+      }
+    );
   }
 }

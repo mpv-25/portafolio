@@ -1,14 +1,16 @@
+import { LoginProvider } from 'angularx-social-login';
+
 export interface Usuario {
   email: String;
   password: String;
 }
 
 export interface Visitante {
-  bloqueado: Boolean;
+  bloqueado?: Boolean;
   correo: String;
   img: String;
   nombre: String;
-  visitas: Number;
+  visitas?: Number;
 }
 
 export interface Skill {
@@ -32,10 +34,22 @@ export interface Reunion {
   hora: String;
   mensaje: String;
   tipoReunion: String;
-  terminado: Boolean;
-  urlOnline: String;
+  terminado?: Boolean;
+  urlOnline?: String;
+  ubicacion?: Ubicacion;
 }
 
+export interface Ubicacion {
+  lat: Number;
+  lng: Number;
+}
+export interface Login {
+  msg: string;
+  token: string;
+}
+export interface loginVisitante {
+  visitante: Login;
+}
 export interface Skills {
   skills: Array<Skill>;
 }
