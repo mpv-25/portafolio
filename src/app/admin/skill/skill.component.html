@@ -1,9 +1,10 @@
 <div class="row formulario-fondo-claro">
-  <form *ngIf="verForm" 
+  <form [formGroup]="skillForm"
+    *ngIf="verForm" 
     class="row mb-3">
     <div class="row justify-content-start align-items-end ">
       <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3">
-        <img src=""
+        <img [src]="imgURL"
           class="img-thumbnail thumbnail200 float-start"
         />
       </div>
@@ -12,10 +13,11 @@
           Seleccione una imagen
         </label>
         <input
+          (change)="mostraImagen($event)"
           class="form-control"
           type="file"
           id="imgUsuario"
-          accept="image/x-png,image/jpeg"
+          accept="image/x-png,image/jpeg,image/svg+xml"
         />
       </div>
     </div>
@@ -23,7 +25,7 @@
     <div class="row">
       <div class="col-12 col-md-4">
         <label for="tituloInput" class="form-label txt-neon">Titulo</label>
-        <input
+        <input formControlName="titulo"
           type="text"
           class="form-control"
           id="tituloInput"
@@ -33,7 +35,8 @@
     </div>
 
     <div class="d-grid gap-2 d-md-block">
-      <button class="btn btn-primary" type="button">Nuevo</button>
+      <button (click)="nuevaSkill()" 
+        class="btn btn-primary" type="button">Nuevo</button>
       <button (click)="cancelar()" 
         type="button" class="btn btn-danger">Cancelar</button>
     </div>
@@ -50,8 +53,9 @@
         type="button" class="btn btn-outline-primary" >Nueva Skill</button>
       </div>
       <ul class="list-group" id="lista-skills">
-        <button type="button" *ngFor="let item of skills.skills" class="list-group-item list-group-item-action">
-          <img [src]="item.img"  class="icon32" alt="icon-skills">
+        <button (click)="verSkill(item)" 
+          type="button" *ngFor="let item of skills" class="list-group-item list-group-item-action">
+          <img [src]="'./assets/img/iconos/' + item.img"  class="icon32" alt="icon-skills">
           {{item.titulo}}
         </button>
       </ul>
