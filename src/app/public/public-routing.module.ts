@@ -9,6 +9,7 @@ import { AcercaDeMiComponent } from './acerca-de-mi/acerca-de-mi.component';
 import { CurriculumComponent } from './curriculum/curriculum.component';
 import { ContactoComponent } from './contacto/contacto.component';
 import { GoogleSignComponent } from './acerca-de-mi/components/google-sign/google-sign.component';
+import { FormularioComponent } from './formulario/formulario.component';
 
 const routes: Routes = [
   {
@@ -22,6 +23,7 @@ const routes: Routes = [
       { path: 'curriculum', component: CurriculumComponent },
       { path: 'contacto', component: ContactoComponent },
       { path: 'google-sign', component: GoogleSignComponent },
+      { path: 'formulario', component: FormularioComponent },
     ],
   },
 ];

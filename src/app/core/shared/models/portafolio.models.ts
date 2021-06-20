@@ -1,5 +1,3 @@
-import { LoginProvider } from 'angularx-social-login';
-
 export interface Usuario {
   email: String;
   password: String;
@@ -14,8 +12,9 @@ export interface Visitante {
 }
 
 export interface Skill {
-  img: String;
+  img?: String;
   titulo: String;
+  archivo?: File;
 }
 
 export interface Proyecto {
