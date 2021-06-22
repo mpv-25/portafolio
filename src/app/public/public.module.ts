@@ -16,7 +16,10 @@ import {
   SocialLoginModule,
   SocialAuthServiceConfig,
 } from 'angularx-social-login';
-import { GoogleLoginProvider, FacebookLoginProvider } from 'angularx-social-login';
+import {
+  GoogleLoginProvider,
+  FacebookLoginProvider,
+} from 'angularx-social-login';
 
 //Angular Material
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -38,6 +41,8 @@ import { VerCurriculumComponent } from './acerca-de-mi/components/ver-curriculum
 import { CurriculumComponent } from './curriculum/curriculum.component';
 import { ContactoComponent } from './contacto/contacto.component';
 import { GoogleSignComponent } from './acerca-de-mi/components/google-sign/google-sign.component';
+import { FormularioComponent } from './formulario/formulario.component';
+
 
 @NgModule({
   declarations: [
@@ -51,6 +56,7 @@ import { GoogleSignComponent } from './acerca-de-mi/components/google-sign/googl
     CurriculumComponent,
     ContactoComponent,
     GoogleSignComponent,
+    FormularioComponent,
   ],
   imports: [
     CommonModule,

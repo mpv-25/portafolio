@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="acerca-de-mi-skill text-center">
+    <img
+      id="img-preview"
+      class="acerca-de-mi-svg"
+      [src]="nombreImg"
+      alt=""
+      data-bs-toggle="tooltip"
+      data-bs-placement="top"
+      title="titulo"
+    />
+  </div>
+  <form [formGroup]="formulario" (ngSubmit)="enviarFormulario()">
+    <div class="input-group mb-3">
+      <input
+        formControlName="titulo"
+        class="form-control"
+        type="text"
+        placeholder="Nombre de la Skill"
+      />
+    </div>
+    <div class="input-group mb-3">
+      <input
+        (change)="onFileChange($event)"
+        formControlName="archivo"
+        type="file"
+        class="form-control"
+        id="inputGroupFile02"
+      />
+      <button type="submit" class="input-group-text">Upload</button>
+    </div>
+  </form>
+</div>

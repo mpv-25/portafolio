@@ -4,16 +4,17 @@ export interface Usuario {
 }
 
 export interface Visitante {
-  bloqueado: Boolean;
+  bloqueado?: Boolean;
   correo: String;
   img: String;
   nombre: String;
-  visitas: Number;
+  visitas?: Number;
 }
 
 export interface Skill {
-  img: String;
+  img?: String;
   titulo: String;
+  archivo?: File;
 }
 
 export interface Proyecto {
@@ -32,10 +33,22 @@ export interface Reunion {
   hora: String;
   mensaje: String;
   tipoReunion: String;
-  terminado: Boolean;
-  urlOnline: String;
+  terminado?: Boolean;
+  urlOnline?: String;
+  ubicacion?: Ubicacion;
 }
 
+export interface Ubicacion {
+  lat: Number;
+  lng: Number;
+}
+export interface Login {
+  msg: string;
+  token: string;
+}
+export interface loginVisitante {
+  visitante: Login;
+}
 export interface Skills {
   skills: Array<Skill>;
 }
