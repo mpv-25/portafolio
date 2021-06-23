@@ -3,21 +3,22 @@
     *ngIf="verForm" 
     class="row mb-3">
     <div class="row justify-content-start align-items-end ">
-      <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3">
-        <img [src]="imgURL"
-          class="img-thumbnail thumbnail200 float-start"
+      <div class="col-12">
+        <img id="imgAvatar" 
+          [src]="imgURL"
+          class="acerca-de-mi-svg"
+          (error)="imagenPorDefecto()"
         />
       </div>
       <div class="col-12 col-md-8">
-        <label for="imgUsuario" class="form-label txt-neon">
+        <label for="inputAvatar" class="form-label txt-neon">
           Seleccione una imagen
         </label>
         <input
-          (change)="mostraImagen($event)"
+          (change)="cargarImagen($event)"
           class="form-control"
           type="file"
-          id="imgUsuario"
-          accept="image/x-png,image/jpeg,image/svg+xml"
+          id="inputAvatar"
         />
       </div>
     </div>
@@ -35,9 +36,9 @@
     </div>
 
     <div class="d-grid gap-2 d-md-block">
-      <button (click)="nuevaSkill()" 
-        class="btn btn-primary" type="button">Nuevo</button>
-      <button (click)="cancelar()" 
+      <button (click)="guardarOEditarSkill()" 
+        class="btn btn-primary" type="button">{{esEdicion ? 'Guardar': 'Nuevo'}}</button>
+      <button (click)="irAtras()" 
         type="button" class="btn btn-danger">Cancelar</button>
     </div>
 
@@ -45,19 +46,53 @@
   <div *ngIf="!verForm" 
     class="row">
     <div class="col">
-      <div class="row mb-2">
-        <h5 for="lista-skills" class="form-label txt-neon text-center">Skills Encontradas</h5>
-      </div>
-      <div class="d-grid col-12 col-sm-6 mx-auto mb-2">
+      <div class="d-grid col-12 col-sm-6 mx-auto mb-2 mt-2">
         <button (click)="mostrarForm()" 
         type="button" class="btn btn-outline-primary" >Nueva Skill</button>
       </div>
+      <div class="row mb-2">
+        <h5 for="lista-skills" class="form-label txt-neon text-center">Skills Encontradas</h5>
+      </div>
+      
       <ul class="list-group" id="lista-skills">
-        <button (click)="verSkill(item)" 
-          type="button" *ngFor="let item of skills" class="list-group-item list-group-item-action">
-          <img [src]="'./assets/img/iconos/' + item.img"  class="icon32" alt="icon-skills">
-          {{item.titulo}}
-        </button>
+        <li  
+          *ngFor="let item of skills" class="list-group-item">
+          <div class="d-grid gap-4 d-sm-block">
+            <div class="d-inline">
+              <img [src]="'./assets/img/iconos/' + item.img"  class="icon32" alt="icon-skills">
+              {{item.titulo}}
+            </div>
+            <div class="d-inline">
+              <button (click)="verSkill(item)"
+                class="btn btn-primary me-md-2" type="button">
+                <span class="btn-label">
+                  <i class="fas fa-edit"></i>
+                </span>
+              </button>
+              <button (click)="verSkill(item)" 
+                class="btn btn-primary" type="button">
+                <span class="btn-label">
+                  <i class="fas fa-trash"></i>
+                </span>
+              </button>
+            </div>
+            
+          </div>
+
+          <!-- <button type="button" class="btn btn-outline-primary btn-rounded"
+            data-mdb-ripple-color="dark">
+            <span class="btn-label">
+              <i class="fas fa-trash"></i>
+            </span>
+          </button>
+          <button type="button" class="btn btn-outline-primary btn-rounded"
+            data-mdb-ripple-color="dark">
+            <span class="btn-label">
+              <i class="fas fa-trash"></i>
+            </span>
+          </button> -->
+      </li>
+        
       </ul>
     </div>
   </div>

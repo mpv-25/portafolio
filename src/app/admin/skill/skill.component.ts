@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Skill, Skills } from 'src/app/core/shared/models/portafolio.models';
 import { SkillsService } from '../services/skills.service';
+import { SwalService } from '../services/swal.service';
 
 @Component({
   selector: 'app-skill',
@@ -13,15 +14,22 @@ export class SkillComponent implements OnInit {
 
   public skills: Array<Skill> = [];
 
+  imagen: Array<File> = [];
+
   verForm: boolean = false;
   imgURL: string = '';
 
+  pathImg: string = '../assets/img/iconos/';
+  noImage: string = 'no-image.jpg'
+  
   skillForm: FormGroup;
+  skillEdicion: any;
+  esEdicion: boolean = false;
 
   constructor(private skillDao: SkillsService,
-    private fb: FormBuilder) {
+    private fb: FormBuilder,
+    private swal: SwalService) {
       this.skillForm = this.fb.group({
-        img: [null],
         titulo: ['',[Validators.required, Validators.minLength(2)]]        
       })
      }
@@ -32,53 +40,115 @@ export class SkillComponent implements OnInit {
         this.skills = skills.skills
       },
       error => {
-        console.log(error)        
+        console.log(error)
+        this.swal.swalError('Error al cargas skills',error)        
       });
   }
 
   mostrarForm(){
     this.verForm = !this.verForm
+    this.esEdicion = false;
   }
   
-  cancelar(){
+  irAtras(){
+    if(this.skillEdicion) this.skillEdicion = undefined;
+    this.esEdicion = false;
     this.verForm = !this.verForm
+    this.limpiarForm();
   }
 
-  nuevaSkill(){
+  //Form para skill
+  //Crear nueva Skill
+  guardarOEditarSkill(){
+    if(!this.skillForm.valid) return
     if (this.skillForm.get('titulo')?.invalid && (this.skillForm.get('titulo')?.dirty || this.skillForm.get('titulo')?.touched )) return
 
-    let model: Skill = {
-      titulo: this.skillForm.get('titulo')?.value,
-      img: this.skillForm.get('img')?.value
+    let formData = new FormData();
+
+    if(this.imagen.length > 0){
+      for (let index = 0; index < this.imagen.length; index++) {
+        formData.append(
+            'archivo',
+            this.imagen[index],
+            this.imagen[index].name
+          )
+      }
     }
+    
+    if(this.skillEdicion == undefined){
+      formData.append('titulo',this.skillForm.get('titulo')?.value)
+      this.skillDao.agregarSkill(formData)
+        .subscribe(
+          res => {
+            console.log(res)
+            this.irAtras();
+            this.swal.swalSucces('Skill creada con exito!')
+          },
+          error => {
+            console.log(error)
+            this.swal.swalError('Error al guardar skill',error)
+          }
+        )
+    }else{
+      this.skillDao.editarSkill(this.skillEdicion._id, this.skillEdicion)
+      .subscribe(
+        res => {
+          console.log(res)
+          this.irAtras();
+          this.swal.swalSucces('Skill editar con exito!')
 
-    this.skillDao.agregarSkill(model)
-      .subscribe(res => console.log(res),
-        error => console.log(error))
+        },
+        error => {
+          console.log(error)
+          this.swal.swalError('Error al guardar skill',error.error)
+        }
+      )
+    }
   }
-
+  //Eliminar Skill
+  eliminarSkill(idSkill:string){
+    this.skillDao.eliminarSkill(idSkill)
+    .subscribe(
+      res => {
+        console.log(res)
+        this.irAtras();
+        this.swal.swalSucces('Skill eliminada con exito!')
+      },
+      error => {
+        console.log(error)
+        this.swal.swalError('Error al guardar skill',error.error)
+      }
+    )
+  }
+  //Selecciona la skill para edicion
   verSkill(skill: Skill){
-    console.log(skill)
+    this.mostrarForm();
+    this.esEdicion = true;
+    this.skillEdicion = skill;
+    this.skillForm.setValue({titulo: skill.titulo})
+    this.imgURL = `${this.pathImg}${skill.img}`
+
+    
   }
 
-  mostraImagen(event:any){
-    const file = (event.target as HTMLInputElement).files![0]; 
-    
-    if(file == null) return
-
-    this.skillForm.patchValue({
-      img: file
-    })
-
-    this.skillForm.get('img')?.updateValueAndValidity();
-    
+  //Cargar imagen desde input y muestra preview
+  cargarImagen(event:any){
+    this.imagen = event.target.files;
+    if(this.imagen == null) return
     const reader = new FileReader();
+    reader.readAsDataURL(this.imagen[0])
     reader.onload = () =>{
-      this.imgURL = reader.result as string;
+      let image: any = document.getElementById('imgAvatar');
+      image.src = reader.result;
     }
-    reader.readAsDataURL(file);
   }
 
+  //Si no pudo cargar ninguna imagen redireccion al assest por defecto
+  imagenPorDefecto(){
+    this.imgURL = `${this.pathImg}${this.noImage}`
+  }
 
-
+  limpiarForm(){
+    this.skillForm.reset({titulo:''});
+  }
 }

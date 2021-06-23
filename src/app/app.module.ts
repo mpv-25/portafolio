@@ -19,17 +19,25 @@ import { CoreModule } from './core/core.module';
 
 //Components
 import { AppComponent } from './app.component';
+import { LoginComponent } from './admin/login/login.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor, authInterceptorProviders } from './admin/helpers/auth.interceptor';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, LoginComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     CoreModule,
     BrowserAnimationsModule,
     AgmCoreModule,
+    ReactiveFormsModule
   ],
-  providers: [{ provide: LOCALE_ID, useValue: 'es' }],
+  providers: [
+    {provide: LOCALE_ID, useValue: 'es' },
+    authInterceptorProviders
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

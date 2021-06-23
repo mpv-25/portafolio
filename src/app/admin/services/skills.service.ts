@@ -14,12 +14,15 @@ export class SkillsService {
     return this.http.get<Skills>(`${this.api}skill`)    
   }
 
-  agregarSkill(skill: Skill){
+  agregarSkill(skill: any){
+    return this.http.post(`${this.api}skill`,skill)
+  }
 
-    let header = new HttpHeaders()
-    header.append('token','');
-    return this.http.post(`${this.api}skill`,skill,{
-      headers: header
-    })
+  editarSkill(idSkill:string,skill:any){
+    return this.http.put(`${this.api}skill/${idSkill}`,skill)
+  }
+
+  eliminarSkill(idSkill:string){
+    return this.http.delete(`${this.api}skill/${idSkill}`)
   }
 }
