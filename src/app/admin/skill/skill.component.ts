@@ -107,12 +107,12 @@ export class SkillComponent implements OnInit {
     }
   }
   //Eliminar Skill
-  eliminarSkill(idSkill:string){
+  eliminarSkill(skill: any){
 
-    this.swal.swalConfirmModal('Esta seguro de querer borrar esta skill?','No podra revertir este cambio')
+    this.swal.swalConfirmModal(`Esta seguro de querer borrar la skill ${skill.titulo}?`,'No podra revertir este cambio')
       .then(res => {
         if(res.isConfirmed){
-          this.skillDao.eliminarSkill(idSkill)
+          this.skillDao.eliminarSkill(skill._id)
             .subscribe(
               res => {
                 console.log(res)
@@ -136,8 +136,6 @@ export class SkillComponent implements OnInit {
     this.skillEdicion = skill;
     this.skillForm.setValue({titulo: skill.titulo})
     this.imgURL = `${this.pathImg}${skill.img}`
-
-    
   }
 
   //Cargar imagen desde input y muestra preview

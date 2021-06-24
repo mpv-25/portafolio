@@ -1,9 +1,11 @@
 <div class="row formulario-fondo-claro">
-    <form class="row mb-3">
+    <form [formGroup]="proyectoForm" 
+      class="row mb-3">
       <div class="row justify-content-start align-items-end ">
         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3">
-          <img src="./assets/img/iconos/angular.svg"
-            class="img-thumbnail thumbnail200 float-start"
+          <img [src]="imgURL"
+            class="acerca-de-mi-svg"
+            (error)=" imagenPorDefecto()"
           />
         </div>
         <div class="col-12 col-md-8">
@@ -14,7 +16,6 @@
             class="form-control"
             type="file"
             id="imgProyecto"
-            accept="image/x-png,image/jpeg"
           />
         </div>
       </div>
@@ -22,7 +23,7 @@
       <div class="row">
         <div class="col-12 col-md-4">
             <label for="tituloInput" class="form-label txt-neon">Titulo</label>
-            <input
+            <input formControlName="titulo"
               type="text"
               class="form-control"
               id="tituloInput"
@@ -32,7 +33,7 @@
 
         <div class="col-12 col-md-4">
           <label for="descInput" class="form-label txt-neon">Descripcion</label>
-          <input
+          <input formControlName="desc"
             type="text"
             class="form-control"
             id="descInput"
@@ -40,13 +41,21 @@
         </div>
 
         <div class="col-12 col-md-4">
-            <label for="urlInput" class="form-label txt-neon">URL</label>
-            <input
-              type="text"
-              class="form-control"
-              id="urlInput"
-              placeholder="URL"/>
-          </div>
+          <label for="urlInput" class="form-label txt-neon">URL</label>
+          <input formControlName="url"
+            type="text"
+            class="form-control"
+            id="urlInput"
+            placeholder="URL"/>
+        </div>
 
+        <div class="col-12 col-md-4">
+          <label for="gitInput" class="form-label txt-neon">GitHub</label>
+          <input formControlName="github"
+            type="text"
+            class="form-control"
+            id="gitInput"
+            placeholder="URL GitHub"/>
+        </div>
       </div>
     </form>
