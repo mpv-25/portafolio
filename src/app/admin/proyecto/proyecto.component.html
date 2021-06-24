@@ -1,14 +1,18 @@
 <div class="row formulario-fondo-claro">
-    <form [formGroup]="proyectoForm" 
+    <form *ngIf="verForm" 
+      [formGroup]="proyectoForm" 
       class="row mb-3">
-      <div class="row justify-content-start align-items-end ">
+      <div class="row justify-content-center">
         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3">
           <img [src]="imgURL"
             class="acerca-de-mi-svg"
             (error)=" imagenPorDefecto()"
           />
         </div>
-        <div class="col-12 col-md-8">
+      </div>
+    
+      <div class="row">
+        <div class="col-12">
           <label for="imgProyecto" class="form-label txt-neon">
             Seleccione una imagen
           </label>
@@ -18,9 +22,7 @@
             id="imgProyecto"
           />
         </div>
-      </div>
-    
-      <div class="row">
+
         <div class="col-12 col-md-4">
             <label for="tituloInput" class="form-label txt-neon">Titulo</label>
             <input formControlName="titulo"
@@ -31,13 +33,14 @@
             />
           </div>
 
-        <div class="col-12 col-md-4">
+        <div class="col-12 ">
           <label for="descInput" class="form-label txt-neon">Descripcion</label>
-          <input formControlName="desc"
+          <textarea formControlName="desc"
             type="text"
             class="form-control"
             id="descInput"
-            placeholder="Descripcion del proyecto"/>
+            placeholder="Descripcion del proyecto">
+          </textarea>
         </div>
 
         <div class="col-12 col-md-4">
@@ -58,4 +61,58 @@
             placeholder="URL GitHub"/>
         </div>
       </div>
+
+      <div class="row mt-2">
+        <div class="row"></div>
+        <div class="col-12">
+          <label for="skill-list"  class="form-label txt-neon"> Skills</label>
+          <ul id="skill-list" class="list-group">
+            <li *ngFor="let item of skills" 
+              class="list-group-item">
+              <input class="form-check-input me-1" type="checkbox" [value]="item._id" aria-label="...">
+              {{item.titulo}}
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="d-grid gap-2 d-md-block">
+        <button (click)="agregarProyecto()" 
+          class="btn btn-primary" type="button">Guardar</button>
+        <button (click)="irAtras()"
+          type="button" class="btn btn-danger">Cancelar</button>
+      </div>
     </form>
+
+    <div *ngIf="!verForm" class="col-12 p-1">
+      <div class="d-grid gap-2">
+        <button (click)="mostrarForm()" class="btn btn-primary" type="button">Nuevo Proyecto</button>
+      </div>
+      <label for="lista-skill" class="txt-neon">Proyecto encontrados</label>
+      <ul class="list-group" id="lista-skills">
+        <li  
+          *ngFor="let item of proyectos" class="list-group-item">
+          <div class="d-grid gap-4 d-sm-block">
+            <div class="d-inline">
+              {{item.titulo}}
+            </div>
+            <div class="d-inline">
+              <button (click)="verProyeto(item)"
+                class="btn btn-primary me-md-2" type="button">
+                <span class="btn-label">
+                  <i class="fas fa-edit"></i>
+                </span>
+              </button>
+              <button 
+                class="btn btn-primary" type="button">
+                <span class="btn-label">
+                  <i class="fas fa-trash"></i>
+                </span>
+              </button>
+            </div>
+            
+          </div>
+        </li>
+      </ul>
+    </div>
+</div>

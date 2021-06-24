@@ -15,6 +15,7 @@ export interface Skill {
   img?: String;
   titulo: String;
   archivo?: File;
+  _id?: string;
 }
 
 export interface Proyecto {
@@ -23,7 +24,7 @@ export interface Proyecto {
   img: Array<String>;
   tecnologias: Array<Skill>;
   titulo: String;
-  ulr: String;
+  url: String;
 }
 
 export interface Reunion {
