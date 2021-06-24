@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Skill, Skills } from 'src/app/core/shared/models/portafolio.models';
+import Swal from 'sweetalert2';
 import { SkillsService } from '../services/skills.service';
 import { SwalService } from '../services/swal.service';
 
@@ -107,18 +108,26 @@ export class SkillComponent implements OnInit {
   }
   //Eliminar Skill
   eliminarSkill(idSkill:string){
-    this.skillDao.eliminarSkill(idSkill)
-    .subscribe(
-      res => {
-        console.log(res)
-        this.irAtras();
-        this.swal.swalSucces('Skill eliminada con exito!')
-      },
-      error => {
-        console.log(error)
-        this.swal.swalError('Error al guardar skill',error.error)
-      }
-    )
+
+    this.swal.swalConfirmModal('Esta seguro de querer borrar esta skill?','No podra revertir este cambio')
+      .then(res => {
+        if(res.isConfirmed){
+          this.skillDao.eliminarSkill(idSkill)
+            .subscribe(
+              res => {
+                console.log(res)
+                this.irAtras();
+                this.swal.swalSucces('Skill eliminada con exito!')
+              },
+              error => {
+                console.log(error)
+                this.swal.swalError('Error al guardar skill',error.error)
+              }
+            )
+        }
+      })
+
+    
   }
   //Selecciona la skill para edicion
   verSkill(skill: Skill){

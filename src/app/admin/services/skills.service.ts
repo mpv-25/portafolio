@@ -1,13 +1,16 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Skill, Skills } from 'src/app/core/shared/models/portafolio.models';
+import { environment } from 'src/environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SkillsService {
 
-  protected api:string = "http://18.117.197.8:3000/api/"
+  // protected api:string = "http://18.117.197.8:3000/api/"
+  private api: string = `${environment.apiPortafolio}/api/`;
+
   constructor(private http: HttpClient) { }
 
   obtenerSkills(){
