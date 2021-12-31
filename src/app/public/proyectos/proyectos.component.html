@@ -8,6 +8,152 @@
       <i class="fas fa-spinner fa-pulse fa-5x"></i>
     </div>
   </div>
+  <!-- Modal -->
+  <div
+    class="modal fade"
+    id="staticBackdrop"
+    data-bs-backdrop="static"
+    data-bs-keyboard="false"
+    tabindex="-1"
+    aria-labelledby="staticBackdropLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="staticBackdropLabel">
+            {{proyecto.titulo}}
+          </h4>
+
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <p class="text-detalle-proyecto">Tecnologías:</p>
+          <ul class="proyecto-lista-iconos">
+            <li
+              *ngFor="let skill of proyecto.tecnologias"
+              class="proyecto-icono"
+            >
+              <img
+                class="proyecto-svg"
+                [src]="'./assets/img/iconos/' + skill.img"
+                alt=""
+                data-bs-toggle="tooltip"
+                data-bs-placement="top"
+                title="{{ skill.titulo }}"
+              />
+            </li>
+          </ul>
+          <p class="text-detalle-proyecto">Descripción:</p>
+          <p class="text-detalle-proyecto">{{proyecto.desc}}</p>
+          <div
+            id="carouselExampleIndicators"
+            class="carousel slide"
+            data-bs-ride="carousel"
+          >
+            <div *ngIf="proyecto.img.length > 0" class="carousel-indicators">
+              <button
+                type="button"
+                data-bs-target="#carouselExampleIndicators"
+                data-bs-slide-to="0"
+                class="active"
+                aria-current="true"
+                aria-label="Slide 1"
+              ></button>
+            </div>
+            <div *ngIf="proyecto.img.length == 0" class="carousel-indicators">
+              <button
+                type="button"
+                data-bs-target="#carouselExampleIndicators"
+                data-bs-slide-to="0"
+                class="active"
+                aria-current="true"
+                attr.aria-label="Slice 0"
+              ></button>
+              <ng-container
+                *ngFor="let i of [0,1,2]; let i1 = index;"
+              >
+                <button
+                  type="button"
+                  data-bs-target="#carouselExampleIndicators"
+		  [attr.data-bs-slide-to]="i1"
+                  [attr.aria-label]="'Slide' + (i1)"
+                ></button>
+              </ng-container>
+            </div>
+
+            <div class="carousel-inner">
+              <div
+                *ngFor="let imagen of proyecto.img; let i2 = index"
+                [class]="{'active':i2 == 0, 'carousel-item':true}"
+              >
+                <img
+                  [src]="'../../../assets/img/proyectos/'+imagen"
+                  class="d-block w-100"
+                  alt="{{imagen}}"
+                />
+              </div>
+              <div
+                *ngIf="proyecto.img.length == 0"
+                class="carousel-item active text-center"
+              >
+                <img
+                  [src]="'../../../assets/img/no-image.jpg'"
+                  class="img-200"
+                  alt="{{proyecto.titulo}}"
+                />
+              </div>
+            </div>
+            <button
+              class="carousel-control-prev"
+              type="button"
+              data-bs-target="#carouselExampleIndicators"
+              data-bs-slide="prev"
+            >
+              <span
+                class="carousel-control-prev-icon"
+                aria-hidden="true"
+              ></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button
+              class="carousel-control-next"
+              type="button"
+              data-bs-target="#carouselExampleIndicators"
+              data-bs-slide="next"
+            >
+              <span
+                class="carousel-control-next-icon"
+                aria-hidden="true"
+              ></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+        </div>
+        <div class="modal-footer d-flex justify-content-center">
+          <a
+            class="m-3 btn-detalle-proyecto"
+            href="{{proyecto.github}}"
+            target="_blank"
+            ><i class="fab fa-github"></i> Github</a
+          >
+
+          <a
+            *ngIf="proyecto.url"
+            class="m-3 btn-detalle-proyecto"
+            href="{{proyecto.url}}"
+            target="_blank"
+            ><i class="fas fa-desktop"></i> Demo</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
   <div
     *ngFor="let proyecto of proyectos"
     class="col-auto text-center animated fadeIn"
@@ -15,7 +161,8 @@
     <div class="proyecto">
       <h3 class="proyecto-titulo">{{ proyecto.titulo }}</h3>
       <p class="proyecto-detalles">
-        {{ proyecto.desc }}
+        {{ proyecto.desc.toString() | slice:0:100 }}{{proyecto.desc.length > 100
+        ? '...' : ' '}}
       </p>
       <ul class="proyecto-lista-iconos">
         <li *ngFor="let skill of proyecto.tecnologias" class="proyecto-icono">
@@ -41,7 +188,13 @@
           <span id="span4"></span>
           <i class="fas fa-code"></i> Code
         </a>
-        <a class="btn-box btn-neon btn-proyecto" href="#">
+        <a
+          class="btn-box btn-neon btn-proyecto"
+          href="#"
+          data-bs-toggle="modal"
+          data-bs-target="#staticBackdrop"
+          (click)="mostrarProyecto(proyecto)"
+        >
           <span id="span1"></span>
           <span id="span2"></span>
           <span id="span3"></span>

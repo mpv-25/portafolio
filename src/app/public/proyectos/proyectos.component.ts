@@ -9,13 +9,20 @@ import { Router } from '@angular/router';
 })
 export class ProyectosComponent implements OnInit {
   public proyectos: Array<Proyecto> = [];
+  public proyecto: Proyecto = {
+    desc: '',
+    github: '',
+    img: [],
+    tecnologias: [],
+    titulo: '',
+    url: '',
+  };
   constructor(
     private portafolioService: PortafolioService,
     private router: Router
   ) {
     this.portafolioService.getProyectos().subscribe(
       (data) => {
-        console.log(data.proyectos);
         this.proyectos = data.proyectos;
       },
       (err) => {
@@ -25,4 +32,8 @@ export class ProyectosComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+
+  mostrarProyecto(proyecto: Proyecto) {
+    this.proyecto = proyecto;
+  }
 }

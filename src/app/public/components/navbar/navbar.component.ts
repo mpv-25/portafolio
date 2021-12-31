@@ -5,7 +5,8 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './navbar.component.html',
 })
 export class NavbarComponent implements OnInit {
-  public logo: string = '{ MPV-WEB }';
+
+  public logo:string = "<matias25pinto />";
 
   constructor() {}
 

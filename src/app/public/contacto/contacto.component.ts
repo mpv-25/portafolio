@@ -5,6 +5,7 @@ import { PortafolioService } from 'src/app/core/shared/services/portafolio.servi
 import { Marcador } from '../models/marcador.class';
 // ES6 Modules or TypeScript
 import Swal from 'sweetalert2';
+import { ValidadoresService } from 'src/app/core/shared/services/validadores.service';
 
 @Component({
   selector: 'app-contacto',
@@ -12,13 +13,14 @@ import Swal from 'sweetalert2';
 })
 export class ContactoComponent implements OnInit {
   public formularioContacto: FormGroup;
-  public lat = -25.3030525;
-  public lng = -57.5941849;
+  public lat = -25.3047461;
+  public lng = -57.5892688;
   public marcadores: Array<Marcador> = [];
 
   constructor(
     private fb: FormBuilder,
-    private portafolioService: PortafolioService
+    private portafolioService: PortafolioService,
+    private validadores: ValidadoresService
   ) {
     this.formularioContacto = this.fb.group({
       empresa: ['', [Validators.required, Validators.minLength(3)]],
@@ -32,7 +34,7 @@ export class ContactoComponent implements OnInit {
       tipoReunion: ['presencial', [Validators.required]],
       urlOnline: [''],
       mensaje: ['', [Validators.required, Validators.minLength(10)]],
-      fecha: ['', [Validators.required]],
+      fecha: ['', [Validators.required, this.validadores.formatoFecha]],
       hora: ['', [Validators.required, Validators.minLength(5)]],
     });
   }
@@ -97,7 +99,7 @@ export class ContactoComponent implements OnInit {
 
   //Funtions
   agregarMarcador(event: any) {
-    if (this.validEmpresa && this.validCorreo && this.validFecha) {
+    if (true) {
       const coords: { lat: number; lng: number } = event.coords;
       const fecha = this.formularioContacto.get('fecha')?.value || '';
       const hora = this.formularioContacto.get('hora')?.value || '';

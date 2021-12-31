@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './footer.component.html',
 })
 export class FooterComponent implements OnInit {
-  public logo: string = '{ MPV-WEB }';
+  public logo: string = 'matias-pinto.com';
   public fecha: Date = new Date();
   public year: number = 0;
 

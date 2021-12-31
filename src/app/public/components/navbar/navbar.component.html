@@ -1,11 +1,12 @@
-<nav class="navbar navbar-expand-lg navbar-dark navbar-fondo-oscuro">
+<nav class="navbar navbar-expand-lg navbar-dark navbar-fondo-oscuro mt-3">
   <div
-    class="container-fluid m-2 d-flex justify-content-between align-items-start"
+    class="
+      container-fluid
+      d-flex
+      justify-content-end
+      align-items-center align-items-lg-start
+    "
   >
-    <a routerLink="/home" class="txt-neon navbar-logo m-2">
-      <span class="logo-icono"><i class="fas fa-chevron-right"></i></span
-      ><span class="logo-texto">./mpv</span>
-    </a>
     <button
       id="btn-menu-movil"
       class="navbar-toggler"
@@ -19,7 +20,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div
-      class="collapse navbar-collapse d-lg-flex justify-content-center justify-content-lg-between"
+      class="collapse navbar-collapse d-lg-flex justify-content-lg-between"
       id="navbarNavAltMarkup"
     >
       <div class="navbar-nav text-start">
@@ -28,7 +29,7 @@
           routerLink="/home"
           routerLinkActive="active"
           (click)="cerrarMenuMovil()"
-          ><i class="fas fa-home m-2"></i> Home</a
+          ><i class="fas fa-home m-2"></i>Home</a
         >
         <a
           class="nav-link m-2"
@@ -53,15 +54,26 @@
         >
       </div>
       <div
-        class="navbar-nav navbar-redes-sociales d-flex flex-row justify-content-center"
+        class="
+          navbar-nav navbar-redes-sociales
+          d-flex
+          flex-row
+          justify-content-center
+        "
       >
-        <a class="nav-link m-3" routerLink="" target="_blanck"
+        <a class="nav-link m-3" href="https://twitter.com/matias25pinto" target="_blanck"
           ><i class="fab fa-twitter"></i
         ></a>
-        <a class="nav-link m-3" routerLink="" target="_black"
+        <a
+          class="nav-link m-3"
+          href="https://www.linkedin.com/in/matias-pinto-v%C3%A1zquez-1906861a2/"
+          target="_black"
           ><i class="fab fa-linkedin-in"></i
         ></a>
-        <a class="nav-link m-3" routerLink="" target="_black"
+        <a
+          class="nav-link m-3"
+          href="https://github.com/Matias25pinto"
+          target="_black"
           ><i class="fab fa-github"></i
         ></a>
       </div>

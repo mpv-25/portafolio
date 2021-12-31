@@ -21,7 +21,7 @@
 
 body {
   font-family: "Pattaya", sans-serif;
-  font-size: 18px;
+  font-size: 12px;
   background: var(--color-fondo);
   line-height: 24px;
 }
@@ -62,6 +62,9 @@ body {
  *=====================================*/
 .fondo-oscuro {
   background-color: var(--color-fondo);
+}
+.btn-white {
+  color: var(--color-texto-claro);
 }
 /* ====================================
  *PARA MANTENER EL FOOTER SIEMPRE AL PIE
@@ -332,7 +335,7 @@ agm-map {
  *ADMIN
  *=====================================*/
 
-.icon32{
+.icon32 {
   width: 32px;
   height: 32px;
 }
@@ -478,6 +481,20 @@ agm-map {
   border: 1px solid var(--color-alert);
   border-radius: 6px;
 }
+input:disabled {
+  background: var(--color-texto-claro);
+  color: var(--color-fondo);
+  border-radius: 5px;
+}
+
+.contacto-input-fecha {
+  display: inline-block;
+  width: 70%;
+  padding: 0.375rem 0.75rem;
+  font-weight: 400;
+  line-height: 1.5;
+  height: 40px;
+}
 
 .contacto-mapa {
   border: 2px solid var(--color-neon);
@@ -531,16 +548,17 @@ agm-map {
 .logo-texto,
 .logo-icono {
   font-size: 1em;
-  margin: 0 5px;
-}
-
-.logo-texto {
-  font-weight: 700;
-}
-
-.logo-icono {
+  margin: auto;
   font-weight: 400;
 }
+
+.navbar-logo-texto,
+.navbar-logo-icono {
+  font-size: 0.5em;
+  margin: auto;
+  font-weight: 400;
+}
+
 /*===========================
 ************PROYECTO*********
 ============================*/
@@ -588,6 +606,12 @@ agm-map {
 .btn-proyecto {
   font-size: 0.7em;
 }
+.img-200 {
+  margin: 5px auto;
+  max-width: 200px;
+}
+
+
 
 /*===========================
 *********ACERCA-DE-MI********
@@ -625,6 +649,27 @@ agm-map {
   border-radius: 6px;
 }
 /*===========================
+******DETALLE PROYECTO*******
+============================*/
+.text-detalle-proyecto {
+  font-family: "Pattaya", sans-serif;
+  font-weight: 400;
+  font-size: 1em;
+  color: var(--color-fondo);
+  line-height: 24px;
+}
+.btn-detalle-proyecto {
+  text-decoration: none;
+  color: var(--color-fondo);
+  font-size: 1em;
+  font-family: "Pattaya", sans-serif;
+  font-weight: 400;
+}
+.btn-detalle-proyecto:hover {
+  color: var(--color-neon);
+}
+
+/*===========================
 ***********RESPONSIVE********
 ============================*/
 @media only screen and (max-width: 800px) {
@@ -638,7 +683,7 @@ agm-map {
  ***************NAVBAR********************
  *=====================================*/
   .navbar-logo {
-    font-size: 1.5em;
+    font-size: 3em;
   }
   /* ====================================
  ***************HOME********************

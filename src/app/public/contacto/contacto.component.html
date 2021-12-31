@@ -23,7 +23,7 @@
             aria-describedby="emailHelp"
           />
           <div id="emailHelp" class="form-text">
-            Nombre de la empresa, si es un particular nombre completo.
+            Si es un particular nombre completo.
           </div>
         </div>
 
@@ -39,64 +39,52 @@
             id="exampleInputEmail1"
             aria-describedby="emailHelp"
           />
-          <div id="emailHelp" class="form-text">
-            Correo de RRHH en caso de que necesite contactarme con ustedes.
-          </div>
+          <div id="emailHelp" class="form-text">Correo de contacto.</div>
         </div>
 
-        <div class="row mb-3 d-flex flex-column flex-md-row">
-          <div class="col-12 col-md-6">
-            <div>
-              <label class="mb-1 txt-neon">Fecha de Reunión </label>
-              <span *ngIf="errorFecha" class="contacto-text-error m-2">*</span>
-            </div>
-            <div class="">
-              <input
-                [disabled]="true"
-                formControlName="fecha"
-                class="contacto-input-fecha"
-                [ngClass]="{ 'contacto-input-error': errorFecha }"
-                matInput
-                [matDatepicker]="picker2"
-                placeholder="Día/Mes/Año"
-              />
-              <mat-datepicker-toggle
-                class="btn-fecha"
-                matSuffix
-                [for]="picker2"
-              ></mat-datepicker-toggle>
-              <mat-datepicker #picker2 [disabled]="false"></mat-datepicker>
-            </div>
-            <div class="form-text">Seleccione una fecha del calendario.</div>
+        <div class="mb-3">
+          <div>
+            <label class="mb-1 txt-neon">Fecha</label>
+            <span *ngIf="errorFecha" class="contacto-text-error m-2">*</span>
           </div>
-          <div
-            class="col-12 col-md-6 d-flex flex-column justify-content-between"
+          <input
+            formControlName="fecha"
+            class="contacto-input-fecha"
+            [ngClass]="{ 'contacto-input-error': errorFecha }"
+            matInput
+            [matDatepicker]="picker2"
+            [disabled]="true"
+            placeholder="Día/Mes/Año"
+          />
+          <mat-datepicker-toggle
+            class="btn-fecha"
+            matSuffix
+            [for]="picker2"
+          ></mat-datepicker-toggle>
+          <mat-datepicker [disabled]="false" touchUi #picker2></mat-datepicker>
+          <div class="form-text">Seleccionar una fecha del calendario.</div>
+        </div>
+        <div class="mb-3">
+          <label class="mb-1 txt-neon">Hora</label>
+          <span *ngIf="errorHora" class="contacto-text-error m-2">*</span>
+          <select
+            class="form-select contacto-input-hora text-center"
+            formControlName="hora"
+            [ngClass]="{ 'contacto-input-error': errorHora }"
           >
-            <div>
-              <label class="mb-1 txt-neon">Hora de Reunión </label>
-              <span *ngIf="errorHora" class="contacto-text-error m-2">*</span>
-            </div>
-            <div class="">
-              <select
-                class="contacto-input-hora text-center"
-                formControlName="hora"
-                [ngClass]="{ 'contacto-input-error': errorHora }"
-              >
-                <option value="">Hora de reunión</option>
-                <option value="08:00">08:00</option>
-                <option value="09:00">09:00</option>
-                <option value="10:00">10:00</option>
-                <option value="11:00">11:00</option>
-                <option value="12:00">12:00</option>
-                <option value="13:00">13:00</option>
-                <option value="14:00">14:00</option>
-                <option value="15:00">15:00</option>
-                <option value="16:00">16:00</option>
-                <option value="17:00">17:00</option>
-              </select>
-            </div>
-            <div class="form-text">Seleccione una hora.</div>
-          </div>
+            <option value="">Horario disponible</option>
+            <option value="08:00">08:00</option>
+            <option value="09:00">09:00</option>
+            <option value="10:00">10:00</option>
+            <option value="11:00">11:00</option>
+            <option value="12:00">12:00</option>
+            <option value="13:00">13:00</option>
+            <option value="14:00">14:00</option>
+            <option value="15:00">15:00</option>
+            <option value="16:00">16:00</option>
+            <option value="17:00">17:00</option>
+          </select>
+          <div class="form-text">Seleccionar la hora de reunión.</div>
         </div>
 
         <div class="mb-3">
@@ -126,20 +114,18 @@
             </div>
           </div>
           <div *ngIf="reunion === 'online'" class="mb-3 animated fadeIn">
-            <label for="exampleInputEmail1" class="mb-2 txt-neon">URL</label>
+            <label for="exampleInputEmail1" class="txt-neon">URL</label>
             <input
               formControlName="urlOnline"
               type="text"
               class="form-control"
             />
-            <div id="emailHelp" class="form-text">
-              URL de Meet o de Zoom otros URL no pasaran la verificación.
-            </div>
+            <div id="emailHelp" class="form-text">URL de Meet o de Zoom.</div>
           </div>
         </div>
         <div *ngIf="reunion === 'presencial'" class="mb-2 animated fadeIn">
           <label for="exampleInputEmail1" class="txt-neon"
-            >Dirección de la reunión
+            >Ubicación de la reunión
           </label>
           <span
             *ngIf="

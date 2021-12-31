@@ -35,7 +35,7 @@ import { AuthInterceptor, authInterceptorProviders } from './admin/helpers/auth.
     ReactiveFormsModule
   ],
   providers: [
-    {provide: LOCALE_ID, useValue: 'es' },
+    {provide: LOCALE_ID, useValue: 'es-PY' },
     authInterceptorProviders
   ],
   bootstrap: [AppComponent],

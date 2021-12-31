@@ -36,6 +36,9 @@
  *========================*/
 
 .header {
+  background: var(--color-aside-inferior);
+  padding:2px;
+  border-bottom: 1px solid #fff;
   width: 100%;
   height: 50px;
 }
@@ -75,11 +78,8 @@
 .main {
   display: flex;
   flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: flex-start;
-  align-items: flex-start;
+  flex-wrap: wrap;
   width: 100%;
-  height: 100%;
   background: var(--color-fondo-main);
 }
 /*=========================
@@ -90,11 +90,11 @@
   display: flex;
   flex-direction: column;
   word-wrap: wrap;
-  justify-content: flex-start;
+  justify-content: flex-center;
   align-items: center;
   width: 30%;
+  min-height: 100vh;
   background: var(--color-aside-inferior);
-  height: 100%;
 }
 .aside__informacion {
   width: 90%;
@@ -119,19 +119,20 @@
   font-weight: 400;
   line-height: 2rem;
 }
+.aside__svg {
+  max-width: 30px;
+  margin: 0 5px;
+  border: 1px solid var(--color-titulo);
+  border-radius: 10px;
+}
 .imagen {
   position: relative;
   max-width: 70%;
-  margin: 10px auto;
-}
-.imagen__oscura {
-  position: absolute;
-  background: var(--color-aside-superior);
-  z-index: 2;
+  margin: 5px auto;
 }
 .img {
   max-width: 100%;
-  margin: 30px auto;
+  margin: 5px auto;
   border: 1px solid var(--color-titulo);
 }
 /*=========================
@@ -186,7 +187,7 @@
 /*=========================
  *RESPONSIVE
  *========================*/
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 815px) {
   /*=========================
  *CONFIGURACIÓN GENERAL
  *========================*/
@@ -228,7 +229,7 @@
 
   .aside {
     width: 40%;
-    height: 100%;
+    min-height: 100vh;
   }
   .aside__span {
     font-size: 0.7rem;
@@ -300,7 +301,7 @@
     margin: auto;
   }
   .nav__a {
-    font-size: 0.6rem;
+    font-size: 0.5rem;
   }
   /*=========================
  *MAIN
@@ -311,6 +312,7 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    min-height: 100vh;
   }
   /*=========================
  *ASIDE
@@ -323,6 +325,7 @@
     justify-content: flex-start;
     align-items: center;
     width: 100%;
+    min-height: 100vh;
     background: var(--color-aside-inferior);
   }
   .aside__informacion {
@@ -354,7 +357,7 @@
   }
   .img {
     max-width: 100%;
-    margin: 10px auto;
+    margin: 5px auto;
     border: 1px solid var(--color-titulo);
   }
   /*=========================
