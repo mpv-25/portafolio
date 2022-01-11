@@ -5556,7 +5556,7 @@ fieldset:disabled .btn {
   pointer-events: auto;
   background-color: #fff;
   background-clip: padding-box;
-  border: 1px solid rgba(0, 0, 0, 0.2);
+  border: 3px solid #0a8cbf;
   border-radius: 0.3rem;
   outline: 0;
 }
@@ -5583,9 +5583,11 @@ fieldset:disabled .btn {
   align-items: center;
   justify-content: space-between;
   padding: 1rem 1rem;
-  border-bottom: 1px solid #dee2e6;
+  border-bottom: 1px solid #0a8cbf;
   border-top-left-radius: calc(0.3rem - 1px);
   border-top-right-radius: calc(0.3rem - 1px);
+  background-color:#0a8cbf;
+  color:#fff;
 }
 .modal-header .btn-close {
   padding: 0.5rem 0.5rem;
@@ -5595,6 +5597,7 @@ fieldset:disabled .btn {
 .modal-title {
   margin-bottom: 0;
   line-height: 1.5;
+  margin: 0 auto;
 }
 
 .modal-body {
@@ -6130,11 +6133,11 @@ fieldset:disabled .btn {
   justify-content: center;
   width: 15%;
   padding: 0;
-  color: #fff;
+  color: #0a8cbf;
   text-align: center;
-  background: none;
+  background: #0a8cbf;
   border: 0;
-  opacity: 0.5;
+  opacity: 0.2;
   transition: opacity 0.15s ease;
 }
 @media (prefers-reduced-motion: reduce) {
@@ -6150,7 +6153,7 @@ fieldset:disabled .btn {
   color: #fff;
   text-decoration: none;
   outline: 0;
-  opacity: 0.9;
+  opacity: 0.5;
 }
 
 .carousel-control-prev {
@@ -6164,8 +6167,8 @@ fieldset:disabled .btn {
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
   display: inline-block;
-  width: 2rem;
-  height: 2rem;
+  width: 3rem;
+  height: 3rem;
   background-repeat: no-repeat;
   background-position: 50%;
   background-size: 100% 100%;
