@@ -1,6 +1,6 @@
 <div class="row justify-content-center animated fast">
-  <div class="col-12-auto text-center">
-    <h3 class="acerca-de-mi-titulo txt-neon">Proyectos</h3>
+  <div class="col-12-auto text-center ">
+    <h3 class="acerca-de-mi-titulo txt-neon fs-3">Proyectos</h3>
     <div
       *ngIf="proyectos.length == 0"
       class="row m-3 text-light animated fadeIn"
@@ -56,35 +56,6 @@
             class="carousel slide"
             data-bs-ride="carousel"
           >
-            <div *ngIf="proyecto.img.length > 0" class="carousel-indicators">
-              <button
-                type="button"
-                data-bs-target="#carouselExampleIndicators"
-                data-bs-slide-to="0"
-                class="active"
-                aria-current="true"
-                aria-label="Slide 1"
-              ></button>
-            </div>
-            <div *ngIf="proyecto.img.length == 0" class="carousel-indicators">
-              <button
-                type="button"
-                data-bs-target="#carouselExampleIndicators"
-                data-bs-slide-to="0"
-                class="active"
-                aria-current="true"
-                attr.aria-label="Slice 0"
-              ></button>
-              <ng-container *ngFor="let i of [0,1,2]; let i1 = index;">
-                <button
-                  type="button"
-                  data-bs-target="#carouselExampleIndicators"
-                  [attr.data-bs-slide-to]="i1"
-                  [attr.aria-label]="'Slide' + (i1)"
-                ></button>
-              </ng-container>
-            </div>
-
             <div class="carousel-inner">
               <div
                 *ngFor="let imagen of proyecto.img; let i2 = index"
@@ -94,16 +65,6 @@
                   [src]="'../../../assets/img/proyectos/'+imagen"
                   class="d-block w-100"
                   alt="{{imagen}}"
-                />
-              </div>
-              <div
-                *ngIf="proyecto.img.length == 0"
-                class="carousel-item active text-center"
-              >
-                <img
-                  [src]="'../../../assets/img/no-image.jpg'"
-                  class="img-200"
-                  alt="{{proyecto.titulo}}"
                 />
               </div>
             </div>
@@ -131,6 +92,16 @@
               ></span>
               <span class="visually-hidden">Next</span>
             </button>
+          </div>
+          <div
+            *ngIf="proyecto.img.length == 0"
+            class="text-center"
+          >
+            <img
+              [src]="'../../../assets/img/no-image.jpg'"
+              class="img-200"
+              alt="{{proyecto.titulo}}"
+            />
           </div>
         </div>
         <div class="modal-footer d-flex justify-content-center">
@@ -209,7 +180,9 @@
         class="page-item"
         [ngClass]="{'active':paginaActual.pagina == pagina, 'cursor-pointer':paginaActual.pagina != pagina}"
       >
-        <a (click)="cargarProyectos(paginaActual.desde)" class="page-link">{{paginaActual.pagina}}</a>
+        <a (click)="cargarProyectos(paginaActual.desde)" class="page-link"
+          >{{paginaActual.pagina}}</a
+        >
       </li>
     </ul>
   </nav>
