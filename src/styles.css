@@ -61,6 +61,9 @@ body {
 /* ====================================
  *GENERALES
  *=====================================*/
+.cursor-pointer {
+  cursor: pointer;
+}
 .example-custom-date-class {
   background: var(--color-neon);
   border-radius: 100%;

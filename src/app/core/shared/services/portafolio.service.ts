@@ -27,9 +27,9 @@ export class PortafolioService {
       },
     });
   }
-  getProyectos() {
+  getProyectos(desde:number) {
     return this.http.get<Proyectos>(
-      `${environment.apiPortafolio}/api/proyecto`
+      `${environment.apiPortafolio}/api/proyecto?desde=${desde}`
     );
   }
 

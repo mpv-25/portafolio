@@ -54,5 +54,7 @@ export interface Skills {
   skills: Array<Skill>;
 }
 export interface Proyectos {
+  pagina: number;
+  totalPaginas: number;
   proyectos: Array<Proyecto>;
 }

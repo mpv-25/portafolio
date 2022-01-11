@@ -202,13 +202,15 @@
       </div>
     </div>
   </div>
-  <nav aria-label="Page navigation example">
+  <nav class="mt-4" aria-label="Page navigation example">
     <ul class="pagination pagination-lg justify-content-center">
-      <li class="page-item active" aria-current="page">
-        <span class="page-link">1</span>
+      <li
+        *ngFor="let paginaActual of paginas"
+        class="page-item"
+        [ngClass]="{'active':paginaActual.pagina == pagina, 'cursor-pointer':paginaActual.pagina != pagina}"
+      >
+        <a (click)="cargarProyectos(paginaActual.desde)" class="page-link">{{paginaActual.pagina}}</a>
       </li>
-      <li class="page-item"><a class="page-link" href="#">2</a></li>
-      <li class="page-item"><a class="page-link" href="#">3</a></li>
     </ul>
   </nav>
 </div>
