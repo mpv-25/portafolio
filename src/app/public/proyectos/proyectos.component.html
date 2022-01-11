@@ -75,13 +75,11 @@
                 aria-current="true"
                 attr.aria-label="Slice 0"
               ></button>
-              <ng-container
-                *ngFor="let i of [0,1,2]; let i1 = index;"
-              >
+              <ng-container *ngFor="let i of [0,1,2]; let i1 = index;">
                 <button
                   type="button"
                   data-bs-target="#carouselExampleIndicators"
-		  [attr.data-bs-slide-to]="i1"
+                  [attr.data-bs-slide-to]="i1"
                   [attr.aria-label]="'Slide' + (i1)"
                 ></button>
               </ng-container>
@@ -204,4 +202,13 @@
       </div>
     </div>
   </div>
+  <nav aria-label="Page navigation example">
+    <ul class="pagination pagination-lg justify-content-center">
+      <li class="page-item active" aria-current="page">
+        <span class="page-link">1</span>
+      </li>
+      <li class="page-item"><a class="page-link" href="#">2</a></li>
+      <li class="page-item"><a class="page-link" href="#">3</a></li>
+    </ul>
+  </nav>
 </div>

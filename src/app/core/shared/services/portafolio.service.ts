@@ -23,14 +23,19 @@ export class PortafolioService {
   crearSkills(body: any) {
     return this.http.post(`${environment.apiPortafolio}/api/skill`, body, {
       headers: {
-        token:
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7Il9pZCI6IjYwYmJjMjkzYzVjOTQyMWIxY2E2YmY2MSIsImVtYWlsIjoibWF0aWFzMjVwaW50b0BnbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCRFM2ZHNGxyRnBQQ3NQRHN1c0hLQnN1bmtBMlVSWjF6Lzgxd0h2U2pPN0Y1VGJpTXNUUzJuLiIsIl9fdiI6MH0sImlhdCI6MTYyNDIxMTQwOCwiZXhwIjoxNjI0MjE1MDA4fQ.abR7vYlGZVQzB46V38zmCMIww9JgrpGaja7DFp9Ic0s',
+        token: '',
       },
     });
   }
   getProyectos() {
     return this.http.get<Proyectos>(
       `${environment.apiPortafolio}/api/proyecto`
+    );
+  }
+
+  getHorasOcupado() {
+    return this.http.get<Array<any>>(
+      `${environment.apiPortafolio}/api/reunion/fechas-ocupado`
     );
   }
 

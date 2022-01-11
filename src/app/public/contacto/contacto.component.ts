@@ -6,6 +6,7 @@ import { Marcador } from '../models/marcador.class';
 // ES6 Modules or TypeScript
 import Swal from 'sweetalert2';
 import { ValidadoresService } from 'src/app/core/shared/services/validadores.service';
+import { MatCalendarCellClassFunction } from '@angular/material/datepicker';
 
 @Component({
   selector: 'app-contacto',
@@ -16,30 +17,50 @@ export class ContactoComponent implements OnInit {
   public lat = -25.3047461;
   public lng = -57.5892688;
   public marcadores: Array<Marcador> = [];
+  public fechasOcupado: any[] = [];
 
   constructor(
     private fb: FormBuilder,
     private portafolioService: PortafolioService,
     private validadores: ValidadoresService
   ) {
-    this.formularioContacto = this.fb.group({
-      empresa: ['', [Validators.required, Validators.minLength(3)]],
-      correo: [
-        '',
-        [
-          Validators.required,
-          Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,3}$'),
+    this.formularioContacto = this.fb.group(
+      {
+        empresa: ['', [Validators.required, Validators.minLength(3)]],
+        correo: [
+          '',
+          [
+            Validators.required,
+            Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,3}$'),
+          ],
         ],
-      ],
-      tipoReunion: ['presencial', [Validators.required]],
-      urlOnline: [''],
-      mensaje: ['', [Validators.required, Validators.minLength(10)]],
-      fecha: ['', [Validators.required, this.validadores.formatoFecha]],
-      hora: ['', [Validators.required, Validators.minLength(5)]],
-    });
+        tipoReunion: ['presencial', [Validators.required]],
+        urlOnline: ['', [this.validadores.urlValido]],
+        mensaje: ['', [Validators.required, Validators.minLength(10)]],
+        fecha: [
+          '',
+          [
+            Validators.required,
+            this.validadores.formatoFecha,
+            this.validadores.fechaValida,
+          ],
+        ],
+        hora: ['', [Validators.required, Validators.minLength(5)]],
+      },
+      { validators: this.validadores.urlActivo('tipoReunion', 'urlOnline') }
+    );
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.cargarFechasOcupado();
+  }
+
+  cargarFechasOcupado() {
+    this.portafolioService.getHorasOcupado().subscribe((resp) => {
+      this.fechasOcupado = resp;
+      localStorage.setItem('fechasOcupado', JSON.stringify(this.fechasOcupado));
+    });
+  }
 
   //Gets
   get reunion(): string {
@@ -77,6 +98,13 @@ export class ContactoComponent implements OnInit {
     return (
       (this.formularioContacto.get('hora')?.invalid &&
         this.formularioContacto.get('hora')?.touched) ||
+      false
+    );
+  }
+  get errorUrlOnline(): boolean {
+    return (
+      (this.formularioContacto.get('urlOnline')?.invalid &&
+        this.formularioContacto.get('urlOnline')?.touched) ||
       false
     );
   }
@@ -200,5 +228,23 @@ export class ContactoComponent implements OnInit {
     });
     //eliminar el primer elemento que es nuestra ubicación
     this.marcadores.shift();
+
+    //Actualizar calendario
+    this.cargarFechasOcupado();
   }
+
+  dateClass: MatCalendarCellClassFunction<Date> = (cellDate, view) => {
+    // Only highligh dates inside the month view.
+    if (view === 'month') {
+      const date = cellDate.getDate();
+      const monthActual = cellDate.getMonth(); //en JS los meses empiezan en 0;
+
+      // Highlight the 1st and 20th day of each month.
+      return this.fechasOcupado[monthActual].includes(date)
+        ? 'example-custom-date-class'
+        : '';
+    }
+
+    return '';
+  };
 }

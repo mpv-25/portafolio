@@ -13,6 +13,7 @@
   --color-success: #22bb33;
   --color-alert: #fd1532;
   --color-facebook: #3b5998;
+  --color-fecha-select: #ea4d26;
 
   margin: 0;
   padding: 0;
@@ -60,6 +61,10 @@ body {
 /* ====================================
  *GENERALES
  *=====================================*/
+.example-custom-date-class {
+  background: var(--color-neon);
+  border-radius: 100%;
+}
 .fondo-oscuro {
   background-color: var(--color-fondo);
 }
