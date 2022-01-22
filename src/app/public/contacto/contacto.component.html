@@ -75,7 +75,7 @@
           ></mat-datepicker>
           <div class="form-text mt-2">
             <span *ngIf="errorFecha" class="contacto-text-error"
-              >Seleccionar una fecha disponible del calendario.
+              >Seleccionar una fecha disponible.
             </span>
           </div>
         </div>
@@ -227,8 +227,23 @@
             </span>
           </div>
         </div>
-        <button type="submit" class="btn-contacto btn-box btn-neon">
+        <button
+          *ngIf="!bloquearBtn"
+          type="submit"
+          class="btn-contacto btn-box btn-neon"
+        >
           {{ "{" + " enviar " + "}" }}
+          <span id="span1"></span>
+          <span id="span2"></span>
+          <span id="span3"></span>
+          <span id="span4"></span>
+        </button>
+        <button
+          *ngIf="bloquearBtn"
+          [disabled]="true"
+          class="btn-contacto btn-box btn-neon"
+        >
+          <i class="fas fa-spinner fa-pulse fa-2x"></i>
           <span id="span1"></span>
           <span id="span2"></span>
           <span id="span3"></span>

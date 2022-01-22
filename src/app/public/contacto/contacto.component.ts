@@ -18,6 +18,7 @@ export class ContactoComponent implements OnInit {
   public lng = -57.5892688;
   public marcadores: Array<Marcador> = [];
   public fechasOcupado: any[] = [];
+  public bloquearBtn:boolean = false;
 
   constructor(
     private fb: FormBuilder,
@@ -146,6 +147,7 @@ export class ContactoComponent implements OnInit {
       (this.marcadores.length > 0 ||
         this.formularioContacto.get('tipoReunion')?.value == 'online')
     ) {
+      this.bloquearBtn = true;
       let body: Reunion = {
         correo: '',
         empresa: '',
@@ -197,6 +199,7 @@ export class ContactoComponent implements OnInit {
             timer: 2000,
           });
           this.limpiarFormulario();
+	  this.bloquearBtn = false;
         },
         (err) => {
           console.warn(err.error.msg);
@@ -206,6 +209,7 @@ export class ContactoComponent implements OnInit {
             text: 'Lo siento, la reunión no puedo ser agendada.',
             footer: `<p class="text-center">${err.error.msg}</p>`,
           });
+	  this.bloquearBtn = false;
         }
       );
     } else {

@@ -1,11 +1,11 @@
 <div class="row justify-content-center animated fast">
-  <div class="col-12-auto text-center ">
+  <div class="col-12-auto text-center">
     <h3 class="acerca-de-mi-titulo txt-neon fs-3">Proyectos</h3>
     <div
       *ngIf="proyectos.length == 0"
-      class="row m-3 text-light animated fadeIn"
+      class="row mt-5 text-light animated fadeIn justify-content-center align-items-center"
     >
-      <i class="fas fa-spinner fa-pulse fa-5x"></i>
+      <i class="fas fa-spinner fa-pulse fa-6x"></i>
     </div>
   </div>
   <!-- Modal -->
@@ -93,10 +93,7 @@
               <span class="visually-hidden">Next</span>
             </button>
           </div>
-          <div
-            *ngIf="proyecto.img.length == 0"
-            class="text-center"
-          >
+          <div *ngIf="proyecto.img.length == 0" class="text-center">
             <img
               [src]="'../../../assets/img/no-image.jpg'"
               class="img-200"
@@ -123,57 +120,63 @@
       </div>
     </div>
   </div>
-  <div
-    *ngFor="let proyecto of proyectos"
-    class="col-auto text-center animated fadeIn"
-  >
-    <div class="proyecto">
-      <h3 class="proyecto-titulo">{{ proyecto.titulo }}</h3>
-      <p class="proyecto-detalles">
-        {{ proyecto.desc.toString() | slice:0:100 }}{{proyecto.desc.length > 100
-        ? '...' : ' '}}
-      </p>
-      <ul class="proyecto-lista-iconos">
-        <li *ngFor="let skill of proyecto.tecnologias" class="proyecto-icono">
-          <img
-            class="proyecto-svg"
-            [src]="'./assets/img/iconos/' + skill.img"
-            alt=""
-            data-bs-toggle="tooltip"
-            data-bs-placement="top"
-            title="{{ skill.titulo }}"
-          />
-        </li>
-      </ul>
-      <div class="m-1">
-        <a
-          class="btn-box btn-neon btn-proyecto"
-          href="{{ proyecto.github }}"
-          target="_blank"
-        >
-          <span id="span1"></span>
-          <span id="span2"></span>
-          <span id="span3"></span>
-          <span id="span4"></span>
-          <i class="fas fa-code"></i> Code
-        </a>
-        <a
-          class="btn-box btn-neon btn-proyecto"
-          href="#"
-          data-bs-toggle="modal"
-          data-bs-target="#staticBackdrop"
-          (click)="mostrarProyecto(proyecto)"
-        >
-          <span id="span1"></span>
-          <span id="span2"></span>
-          <span id="span3"></span>
-          <span id="span4"></span>
-          <i class="fas fa-window-maximize"></i> Preview
-        </a>
+  <div class="row justify-content-center ms-3 me-3">
+    <div
+      *ngFor="let proyecto of proyectos"
+      class="col-auto text-center animated fadeIn"
+    >
+      <div class="proyecto">
+        <h3 class="proyecto-titulo">{{ proyecto.titulo }}</h3>
+        <p class="proyecto-detalles">
+          {{ proyecto.desc.toString() | slice:0:100 }}{{proyecto.desc.length >
+          100 ? '...' : ' '}}
+        </p>
+        <ul class="proyecto-lista-iconos">
+          <li *ngFor="let skill of proyecto.tecnologias" class="proyecto-icono">
+            <img
+              class="proyecto-svg"
+              [src]="'./assets/img/iconos/' + skill.img"
+              alt=""
+              data-bs-toggle="tooltip"
+              data-bs-placement="top"
+              title="{{ skill.titulo }}"
+            />
+          </li>
+        </ul>
+        <div class="m-1">
+          <a
+            class="btn-box btn-neon btn-proyecto"
+            href="{{ proyecto.github }}"
+            target="_blank"
+          >
+            <span id="span1"></span>
+            <span id="span2"></span>
+            <span id="span3"></span>
+            <span id="span4"></span>
+            <i class="fas fa-code"></i> Code
+          </a>
+          <a
+            class="btn-box btn-neon btn-proyecto"
+            href="#"
+            data-bs-toggle="modal"
+            data-bs-target="#staticBackdrop"
+            (click)="mostrarProyecto(proyecto)"
+          >
+            <span id="span1"></span>
+            <span id="span2"></span>
+            <span id="span3"></span>
+            <span id="span4"></span>
+            <i class="fas fa-window-maximize"></i> Preview
+          </a>
+        </div>
       </div>
     </div>
   </div>
-  <nav class="mt-4" aria-label="Page navigation example">
+  <nav
+    *ngIf="proyectos.length > 0"
+    class="mt-4"
+    aria-label="Page navigation example"
+  >
     <ul class="pagination pagination-lg justify-content-center">
       <li
         *ngFor="let paginaActual of paginas"
