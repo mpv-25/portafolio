@@ -43,7 +43,7 @@ export class ValidadoresService {
       const fecha = control.value;
       let dd = fecha.getDate();
       let mm = fecha.getMonth();
-
+      //Verificar si el día esta ocupado
       if (fechaOcupado[mm].includes(dd)) {
         return { noFecha: true };
       }
@@ -76,6 +76,25 @@ export class ValidadoresService {
       } else {
         if (urlOnline.value.length == 0) {
           urlOnline.setErrors({ urlNoActivo: true });
+        }
+      }
+    };
+  }
+
+  validarFechaPresencial(control1: string, control2: string) {
+    return (formGroup: FormGroup) => {
+      const tipoReunion = formGroup.controls[control1];
+      const fecha = formGroup.controls[control2];
+      if (fecha.value) {
+        const toDay = new Date();
+        const fecha1 = `${fecha.value.getFullYear()}-${fecha.value.getMonth()}-${fecha.value.getDate()}`;
+        const fecha2 = `${toDay.getFullYear()}-${toDay.getMonth()}-${toDay.getDate()}`;
+
+        if (tipoReunion.value == 'presencial' && fecha1 == fecha2) {
+          fecha.setErrors({ fechaNoValida: true });
+        }
+        if (tipoReunion.value == 'online') {
+          fecha.setErrors(null);
         }
       }
     };
