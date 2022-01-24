@@ -47,6 +47,13 @@ export class VerCurriculumComponent implements OnInit {
           localStorage.setItem('token', resp.visitante.token);
           let btnCerrar = document.getElementById('btnCerrar');
           btnCerrar?.click();
+          Swal.fire({
+            icon: 'success',
+            text: 'Se envión una copia del currículum al correo de contacto ingresado.',
+            footer: '<small>www.matias-pinto.com</small>',
+            confirmButtonText: '<small class="btn-ok">OK</small>',
+	    confirmButtonColor:'#0a8cbf',
+          });
           this.router.navigate(['curriculum']);
         },
         (err) => {
@@ -54,7 +61,7 @@ export class VerCurriculumComponent implements OnInit {
           Swal.fire({
             icon: 'error',
             title: 'Oops...',
-            text: 'Lo siento, no tiene permiso para ver el curriculum.',
+            text: 'No tiene permiso para ver el curriculum.',
             footer: `<p class="text-center">${err.error.err.msg}</p>`,
           });
           this.bloqueraBtn = false;

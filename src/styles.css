@@ -74,6 +74,10 @@ body {
 .btn-white {
   color: var(--color-texto-claro);
 }
+
+.btn-ok{
+  color: var(--color-texto-claro);
+}
 /* ====================================
  *PARA MANTENER EL FOOTER SIEMPRE AL PIE
  *=====================================*/

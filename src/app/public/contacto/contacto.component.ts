@@ -52,7 +52,7 @@ export class ContactoComponent implements OnInit {
         validators: [
           this.validadores.validarUrlActivo('tipoReunion', 'urlOnline'),
           this.validadores.validarHoraOnline('tipoReunion', 'fecha', 'hora'),
-	  this.validadores.validarFechaPresencial('tipoReunion', 'fecha'),
+          this.validadores.validarFechaPresencial('tipoReunion', 'fecha'),
         ],
       }
     );
@@ -235,12 +235,14 @@ export class ContactoComponent implements OnInit {
       this.portafolioService.crearReunion(body).subscribe(
         (resp) => {
           Swal.fire({
-            position: 'top-end',
             icon: 'success',
-            title: 'La reunión fue agendada con éxito.',
-            showConfirmButton: false,
-            timer: 2000,
+            text: 'Se envió un correo de confirmación con los datos de la reunión.',
+            footer: '<small>www.matias-pinto.com</small>',
+	    confirmButtonText: '<small class="btn-ok">OK</small>',
+	    confirmButtonColor:'#0a8cbf',
+
           });
+
           this.limpiarFormulario();
           this.bloquearBtn = false;
         },
