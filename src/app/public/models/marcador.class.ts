@@ -7,7 +7,9 @@ export class Marcador {
 
   public hora = '00:00';
 
-  constructor(lat: number, lng: number, fecha: string, hora: string) {
+  public empresa = '';
+
+  constructor(lat: number, lng: number, fecha: string, hora: string, empresa:string) {
     this.lat = lat;
 
     this.lng = lng;
@@ -15,5 +17,7 @@ export class Marcador {
     this.fecha = fecha;
 
     this.hora = hora;
+    
+    this.empresa = empresa;
   }
 }

@@ -36,22 +36,23 @@ export class ContactoComponent implements OnInit {
           ],
         ],
         tipoReunion: ['presencial', [Validators.required]],
-        urlOnline: ['', [this.validadores.urlValido]],
+        urlOnline: ['', [this.validadores.validarUrlMeet]],
         mensaje: ['', [Validators.required, Validators.minLength(10)]],
         fecha: [
           '',
           [
             Validators.required,
-            this.validadores.formatoFecha,
-            this.validadores.fechaValida,
+            this.validadores.validarFormatoFecha,
+            this.validadores.validarFechaDisponible,
           ],
         ],
         hora: ['', [Validators.required, Validators.minLength(5)]],
       },
       {
         validators: [
-          this.validadores.urlActivo('tipoReunion', 'urlOnline'),
-          this.validadores.validarFechaPresencial('tipoReunion', 'fecha'),
+          this.validadores.validarUrlActivo('tipoReunion', 'urlOnline'),
+          this.validadores.validarHoraOnline('tipoReunion', 'fecha', 'hora'),
+	  this.validadores.validarFechaPresencial('tipoReunion', 'fecha'),
         ],
       }
     );
@@ -100,13 +101,43 @@ export class ContactoComponent implements OnInit {
       false
     );
   }
+  get errorFechaPresencial(): boolean {
+    return (
+      (this.formularioContacto.get('fecha')?.errors?.fechaPresencialNoValida &&
+        this.formularioContacto.get('fecha')?.touched) ||
+      false
+    );
+  }
+  get errorFormatoFecha(): boolean {
+    return (
+      (this.formularioContacto.get('fecha')?.errors?.formatoFechaNoValida &&
+        this.formularioContacto.get('fecha')?.touched) ||
+      false
+    );
+  }
+  get errorFechaDisponible(): boolean {
+    return (
+      (this.formularioContacto.get('fecha')?.errors?.fechaDisponibleNoValida &&
+        this.formularioContacto.get('fecha')?.touched) ||
+      false
+    );
+  }
+
   get errorHora(): boolean {
     return (
-      (this.formularioContacto.get('hora')?.invalid &&
+      (this.formularioContacto.get('hora')?.errors?.required &&
         this.formularioContacto.get('hora')?.touched) ||
       false
     );
   }
+  get errorHoraOnline(): boolean {
+    return (
+      (this.formularioContacto.get('hora')?.errors?.horaOnlineNoValida &&
+        this.formularioContacto.get('hora')?.touched) ||
+      false
+    );
+  }
+
   get errorUrlOnline(): boolean {
     return (
       (this.formularioContacto.get('urlOnline')?.invalid &&
@@ -137,8 +168,15 @@ export class ContactoComponent implements OnInit {
       const coords: { lat: number; lng: number } = event.coords;
       const fecha = this.formularioContacto.get('fecha')?.value || '';
       const hora = this.formularioContacto.get('hora')?.value || '';
+      const empresa = this.formularioContacto.get('empresa')?.value || '';
 
-      this.marcadores[0] = new Marcador(coords.lat, coords.lng, fecha, hora);
+      this.marcadores[0] = new Marcador(
+        coords.lat,
+        coords.lng,
+        fecha,
+        hora,
+        empresa
+      );
 
       //Hacer click al mapa
       const mapa = document.getElementById('mapa-google');

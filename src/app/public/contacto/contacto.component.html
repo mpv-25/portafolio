@@ -48,64 +48,6 @@
           </div>
         </div>
 
-        <div *ngIf="fechasOcupado.length > 0" class="mb-3">
-          <div>
-            <label class="mb-1 txt-neon">Fecha de Reunión</label>
-            <span *ngIf="errorFecha" class="contacto-text-error m-2">*</span>
-          </div>
-          <input
-            formControlName="fecha"
-            class="contacto-input-fecha"
-            [ngClass]="{ 'contacto-input-error': errorFecha }"
-            matInput
-            [matDatepicker]="picker2"
-            [disabled]="true"
-            placeholder="Día/Mes/Año"
-          />
-          <mat-datepicker-toggle
-            class="btn-fecha"
-            matSuffix
-            [for]="picker2"
-          ></mat-datepicker-toggle>
-          <mat-datepicker
-            [dateClass]="dateClass"
-            [disabled]="false"
-            touchUi
-            #picker2
-          ></mat-datepicker>
-          <div class="form-text mt-2">
-            <span *ngIf="errorFecha" class="contacto-text-error"
-              >Seleccionar una fecha disponible.
-            </span>
-          </div>
-        </div>
-        <div class="mb-3">
-          <label class="mb-1 txt-neon">Hora de Reunión</label>
-          <span *ngIf="errorHora" class="contacto-text-error m-2">*</span>
-          <select
-            class="form-select contacto-input-hora text-center"
-            formControlName="hora"
-            [ngClass]="{ 'contacto-input-error': errorHora }"
-          >
-            <option value="">Horario disponible</option>
-            <option value="08:00">08:00</option>
-            <option value="09:00">09:00</option>
-            <option value="10:00">10:00</option>
-            <option value="11:00">11:00</option>
-            <option value="12:00">12:00</option>
-            <option value="13:00">13:00</option>
-            <option value="14:00">14:00</option>
-            <option value="15:00">15:00</option>
-            <option value="16:00">16:00</option>
-            <option value="17:00">17:00</option>
-          </select>
-          <div class="form-text mt-2">
-            <span *ngIf="errorHora" class="contacto-text-error"
-              >Seleccionar la hora de reunión.</span
-            >
-          </div>
-        </div>
-
         <div class="mb-3">
           <label class="mb-1 txt-neon">Tipo de Reunión </label>
           <div class="mb-1 d-flex flex-row justify-content-around">
@@ -190,17 +132,96 @@
               >
                 <agm-info-window>
                   <div class="text-center">
-                    <strong class="color-negro">{{ "Reunión" }}</strong>
-                    <p *ngIf="marcador.fecha" class="color-negro">
-                      Fecha: {{ marcador.fecha | date: "fullDate" }}
+                    <strong class="color-negro"
+                      >{{ "Ubicación de la Reunión" }}</strong
+                    >
+                    <p *ngIf="marcador.empresa" class="color-negro">
+                      Empresa: {{ marcador.empresa | uppercase }}
                     </p>
-                    <p *ngIf="marcador.hora" class="color-negro">
-                      {{ "Hora: " + marcador.hora + " hs." }}
+
+                    <p *ngIf="marcador.lat" class="color-negro">
+                      lat: {{ marcador.lat }}
+                    </p>
+                    <p *ngIf="marcador.lng" class="color-negro">
+                      lng: {{ marcador.lng }}
                     </p>
                   </div>
                 </agm-info-window>
               </agm-marker>
             </agm-map>
+          </div>
+        </div>
+
+        <div *ngIf="fechasOcupado.length > 0" class="mb-3">
+          <div>
+            <label class="mb-1 txt-neon">Fecha de Reunión</label>
+            <span
+              *ngIf="errorFechaDisponible || errorFechaPresencial || errorFormatoFecha "
+              class="contacto-text-error m-2"
+              >*</span
+            >
+          </div>
+          <input
+            formControlName="fecha"
+            class="contacto-input-fecha"
+            [ngClass]="{ 'contacto-input-error': errorFecha }"
+            matInput
+            [matDatepicker]="picker2"
+            [disabled]="true"
+            placeholder="Día/Mes/Año"
+          />
+          <mat-datepicker-toggle
+            class="btn-fecha"
+            matSuffix
+            [for]="picker2"
+          ></mat-datepicker-toggle>
+          <mat-datepicker
+            [dateClass]="dateClass"
+            [disabled]="false"
+            touchUi
+            #picker2
+          ></mat-datepicker>
+          <div class="form-text mt-2">
+            <span *ngIf="errorFechaDisponible" class="contacto-text-error"
+              >Seleccionar una fecha disponible.
+            </span>
+            <span *ngIf="errorFechaPresencial" class="contacto-text-error"
+              >Si la reunión es presencial el agendamiento debe ser por lo menos
+              un día antes.
+            </span>
+            <span *ngIf="errorFormatoFecha" class="contacto-text-error"
+              >Seleccionar una fecha valida.
+            </span>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label class="mb-1 txt-neon">Hora de Reunión</label>
+          <span *ngIf="errorHora || errorHoraOnline" class="contacto-text-error m-2">*</span>
+          <select
+            class="form-select contacto-input-hora text-center"
+            formControlName="hora"
+            [ngClass]="{ 'contacto-input-error': errorHora }"
+          >
+            <option value="">Horario disponible</option>
+            <option value="08:00">08:00</option>
+            <option value="09:00">09:00</option>
+            <option value="10:00">10:00</option>
+            <option value="11:00">11:00</option>
+            <option value="12:00">12:00</option>
+            <option value="13:00">13:00</option>
+            <option value="14:00">14:00</option>
+            <option value="15:00">15:00</option>
+            <option value="16:00">16:00</option>
+            <option value="17:00">17:00</option>
+          </select>
+          <div class="form-text mt-2">
+            <span *ngIf="errorHora" class="contacto-text-error"
+              >Seleccionar la hora de reunión.</span
+            >
+            <span *ngIf="errorHoraOnline" class="contacto-text-error"
+              >Si la reunión es online el agendamiento debe ser por lo menos 4
+              horas antes.</span
+            >
           </div>
         </div>
 
