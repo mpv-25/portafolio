@@ -49,10 +49,10 @@ export class VerCurriculumComponent implements OnInit {
           btnCerrar?.click();
           Swal.fire({
             icon: 'success',
-            text: 'Se envión una copia del currículum al correo de contacto ingresado.',
+            text: 'Se envió una copia del currículum al correo de contacto ingresado.',
             footer: '<small>www.matias-pinto.com</small>',
             confirmButtonText: '<small class="btn-ok">OK</small>',
-	    confirmButtonColor:'#0a8cbf',
+            confirmButtonColor: '#0a8cbf',
           });
           this.router.navigate(['curriculum']);
         },
