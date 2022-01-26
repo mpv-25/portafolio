@@ -75,7 +75,7 @@ body {
   color: var(--color-texto-claro);
 }
 
-.btn-ok{
+.btn-ok {
   color: var(--color-texto-claro);
 }
 /* ====================================
@@ -516,7 +516,6 @@ input:disabled {
   height: 40px;
 }
 
-
 .contacto-mapa {
   border: 2px solid var(--color-neon);
   margin: 10px;
@@ -632,8 +631,6 @@ input:disabled {
   max-width: 200px;
 }
 
-
-
 /*===========================
 *********ACERCA-DE-MI********
 ============================*/
@@ -694,6 +691,7 @@ input:disabled {
 ***********RESPONSIVE********
 ============================*/
 @media only screen and (max-width: 800px) {
+  
   /* ====================================
  *Botn de facebook
  *=====================================*/
