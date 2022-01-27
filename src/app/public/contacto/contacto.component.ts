@@ -238,9 +238,8 @@ export class ContactoComponent implements OnInit {
             icon: 'success',
             text: 'Se envió un correo de confirmación con los datos de la reunión.',
             footer: '<small>www.matias-pinto.com</small>',
-	    confirmButtonText: '<small class="btn-ok">OK</small>',
-	    confirmButtonColor:'#0a8cbf',
-
+            confirmButtonText: '<small class="btn-ok">OK</small>',
+            confirmButtonColor: '#0a8cbf',
           });
 
           this.limpiarFormulario();
@@ -262,7 +261,6 @@ export class ContactoComponent implements OnInit {
       Object.values(this.formularioContacto.controls).forEach((control) => {
         control.markAsTouched();
       });
-      console.warn('Formulario no válido');
     }
   }
   limpiarFormulario() {
