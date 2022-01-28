@@ -21,7 +21,7 @@ export class ValidadoresService {
       let mm = fecha.getMonth();
       let yyyy = fecha.getFullYear();
       if (
-        dd < fechaHoy.getDate() ||
+        (dd < fechaHoy.getDate() && mm == fechaHoy.getMonth()) ||
         mm < fechaHoy.getMonth() ||
         yyyy != fechaHoy.getFullYear()
       ) {
